@@ -223,7 +223,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0, g: 0, b: 0, a: 1}
+      maxColor: {r: 1, g: 0.48472303, b: 0, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -4826,7 +4826,7 @@ GameObject:
   - component: {fileID: 7186719110727601726}
   - component: {fileID: 7524519579575356905}
   m_Layer: 0
-  m_Name: EarthMeteor
+  m_Name: FireMeteor
   m_TagString: Meteor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4876,7 +4876,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b05b5d71f40014a2e927bbfe309b425a, type: 2}
+  - {fileID: 2100000, guid: d031e0eb1bd794a4b86d9bf928359df9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EarthMonster : MonoBehaviour
+public class IceMonster : MonoBehaviour
 {
     // Start is called before the first frame update
     public float AttackTimemin = 2.0f; //attack 랜덤 값의 최소값
@@ -15,18 +15,21 @@ public class EarthMonster : MonoBehaviour
 
     public Transform[] AttackArea;
 
+    public GameObject ice_age;
+
     private bool canMake = true;
 
     private Animator animator;
 
     public int HP = 100;
+
     private int currentHp;
 
     [SerializeField] private MonsterHP_Bar HP_Bar;
 
+
     void Start()
     {
-
         Player = GameObject.FindGameObjectWithTag("Player");
         animator = GetComponent<Animator>();
         StartCoroutine("BasicAttack");
@@ -38,8 +41,8 @@ public class EarthMonster : MonoBehaviour
         }
         Circle = this.gameObject.transform.GetChild(4).GetComponent<ParticleSystem>();
         Circle.Stop();
-        currentHp = HP;
-        HP_Bar.UpdateHpbar(HP,currentHp);
+        HP_Bar.UpdateHpbar(HP, currentHp);
+        
     }
 
     // Update is called once per frame
@@ -98,21 +101,13 @@ public class EarthMonster : MonoBehaviour
     {
         while (true)
         {
-            float randomValue = Random.Range(AttackTimemin, AttackTimemax);
-            yield return new WaitForSeconds(randomValue);
             if (animator.GetInteger("Condition") != 2)
             {
                 animator.SetInteger("Condition", 1);
-                int randomValueAttack = Random.Range(0, 3);
-                for (int i = 0; i < 10; i++)
-                {
-                    AttackArea[randomValueAttack].GetChild(0).GetComponent<Meteor>().SetBulletPosition(Player.transform);
-                    GameObject go = Instantiate(Meteor, AttackArea[randomValueAttack].position, Quaternion.identity);
-                    go.transform.parent = AttackArea[randomValueAttack].transform;
-                    yield return new WaitForSeconds(0.1f);
-                }
+                GameObject go = Instantiate(ice_age,Player.transform.position,Quaternion.identity);
                 //StartCoroutine("SpawnMeteor");
             }
+             yield return new WaitForSeconds(5.0f);
         }
     }
 
