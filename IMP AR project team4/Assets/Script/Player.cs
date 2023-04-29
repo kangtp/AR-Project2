@@ -2,11 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
 
 public class Player : MonoBehaviour
 {
     public AudioSource hurtAudio;
     private int health = 5;
+    private LifeManager lifeManger;
+    public int kill = 0;
+    private Scene targetScene;
+   
 
     //for Camera Shake
     //public float shakeTime = 1.0f;
@@ -14,32 +20,66 @@ public class Player : MonoBehaviour
     //public float shakeAmount = 1.0f;
     //private Transform cam;
     public Image bloodScreen;
+
+   
+  
     void Start()
     {
+     
+        lifeManger = GameObject.FindObjectOfType<LifeManager>();
         //cam = GameObject.FindGameObjectWithTag("MainCamera").transform;
-        
+        //if (targetScene != null)
+        //{
+        //    parentUis = targetScene.GetRootGameObjects();
+
+        //    for(int i = 0; i<parentUis.Length;i++)
+        //    {
+        //        Transform[] children = parentUis[i].GetComponentsInChildren<Transform>(true);
+        //        for (int j = 0; j < children.Length; j++)
+        //        {
+        //            if (children[j].name == "GameOverMenu")
+        //            {
+        //                gameOverUI = children[j].gameObject;
+        //                break;
+        //            }
+        //        }
+        //    }
+        //}
+        targetScene = SceneManager.GetSceneByName("GameOver");
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(health == 0)
-        {
-            Debug.Log("You die!");
-            health = 10;
-            //Death UI ¶ç¿ì±â
-        }
         
+
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Enemy"))
+        if (other.gameObject.CompareTag("Meteor"))
         {
-            hurtAudio.Play();
-            health--;
-            StartCoroutine(ShowBloodScreen());
+            
+           
+            
+                health--;
+                lifeManger.reloadLife(health);
+
+
+                hurtAudio.Play();
+
+                StartCoroutine(ShowBloodScreen());
+            if (health <= 0)
+            {
+
+                //if (targetScene != null)
+                //{
+                //    SceneManager.LoadScene("GameOver");
+                //}
+
+
+            }
         }
-        
+
     }
 
     //IEnumerator Shake()

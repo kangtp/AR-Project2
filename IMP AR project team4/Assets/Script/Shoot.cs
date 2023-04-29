@@ -145,76 +145,8 @@ public class Shoot : MonoBehaviour
 
 
 
-    public void ElectricShooting()
-    {
-        Vector3 cameraPostion_z = Camera.main.transform.forward;
-        Rigidbody ElectricbulletObject = Instantiate(ElectricBullet.GetComponent<Rigidbody>(), transform.position, Quaternion.identity);
-        ElectricbulletObject.AddForce(cameraPostion_z * speed, ForceMode.Impulse);
-        Ray ray = Camera.main.ScreenPointToRay(ScreenCenterPoint);
-        RaycastHit hit;
-        _audioSource.PlayOneShot(ElectricSound);
-
-        if (Physics.Raycast(ray, out hit, range, shootableMask))
-        {
-            //if (hit.collider.CompareTag("Boss"))
-            //{
-
-            //}
-            //else if (hit.collider.CompareTag("FireEnemy"))
-            //{
-
-            //}
-            //else if (hit.collider.CompareTag("WaterEnemy"))
-            //{
-
-            //}
-            //else if (hit.collider.CompareTag("GroundEnemy"))
-            //{
-
-
-            //}
-            //else
-            //{
-
-            //}
-        }
-    }
-    public void WaterShooting()
-    {
-        Vector3 cameraPostion_z = Camera.main.transform.forward;
-        Rigidbody WaterbulletObject = Instantiate(WaterBullet.GetComponent<Rigidbody>(), transform.position, Quaternion.identity);
-        WaterbulletObject.AddForce(cameraPostion_z * speed, ForceMode.Impulse);
-
-        Ray ray = Camera.main.ScreenPointToRay(ScreenCenterPoint);
-        RaycastHit hit;
-        _audioSource.PlayOneShot(WaterSound);
-
-        if (Physics.Raycast(ray, out hit, range, shootableMask))
-        {
-            //if (hit.collider.CompareTag("Boss"))
-            //{
-
-            //}
-            //else if (hit.collider.CompareTag("FireEnemy"))
-            //{
-
-            //}
-            //else if (hit.collider.CompareTag("WaterEnemy"))
-            //{
-
-            //}
-            //else if (hit.collider.CompareTag("GroundEnemy"))
-            //{
-
-
-            //}
-            //else
-            //{
-
-            //}
-        }
-
-    }
+  
+   
 
 
 

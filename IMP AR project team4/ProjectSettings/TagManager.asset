@@ -9,6 +9,10 @@ TagManager:
   - electricityObject
   - grassObject
   - Enemy
+  - Meteor
+  - RockMonster
+  - FireMonster
+  - IceMonster
   layers:
   - Default
   - TransparentFX

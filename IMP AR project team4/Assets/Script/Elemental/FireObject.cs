@@ -16,7 +16,7 @@ public class FireObject : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Enemy"))
+        if (other.gameObject.CompareTag("Enemy") || other.CompareTag("RockMonster") || other.CompareTag("IceMonster") || other.CompareTag("FireMonster")) 
         {
             GameObject go = Instantiate(fireSkill, other.transform.position, fireSkill.transform.rotation);
             Destroy(go,4.0f);

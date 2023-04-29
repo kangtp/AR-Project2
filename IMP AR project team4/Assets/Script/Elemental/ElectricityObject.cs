@@ -17,7 +17,7 @@ public class ElectricityObject : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Enemy"))
+        if (other.gameObject.CompareTag("Enemy") || other.CompareTag("RockMonster") || other.CompareTag("IceMonster") || other.CompareTag("FireMonster"))
         {
             GameObject go = Instantiate(electricSkill, other.transform.position, electricSkill.transform.rotation);
             Destroy(go, 2.0f);

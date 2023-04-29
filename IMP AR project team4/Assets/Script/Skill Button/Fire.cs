@@ -19,11 +19,14 @@ public class Fire : MonoBehaviour
     private void Awake()
     {
         fireButton = GetComponent<Button>();
-        fireButton.onClick.AddListener(ShootFire);
+        fireButton.onClick.AddListener(ShootWater);
         _buttonAudio = FindObjectOfType<AudioSource>();
         icon = GetComponent<Image>();
         imgColor = icon.color;
     }
+
+
+
 
 
     // Update is called once per frame
@@ -31,6 +34,7 @@ public class Fire : MonoBehaviour
     {
 
         //인식처리가 true라면 fireCheck true 아니라면 false 반환
+
         //Debug.Log(fireCheck);
         ColorChange();
 
@@ -54,13 +58,13 @@ public class Fire : MonoBehaviour
         }
 
     }
-    public void ShootFire()
+    public void ShootWater()
     {
         Debug.Log("FireButton cliceked");
         if (fireCheck)
         {
             Debug.Log("Fire");
-            FireShooting();
+            WaterShooting();
             fireCheck = false;
             //Fire check is false 
         }
@@ -69,11 +73,11 @@ public class Fire : MonoBehaviour
             //No change
         }
     }
-    public void FireShooting()
+    public void WaterShooting()
     {
         Vector3 cameraPostion_z = Camera.main.transform.forward;
-        Rigidbody FirebulletObject = Instantiate(shootManger.FireBullet.GetComponent<Rigidbody>(), shootManger.transform.position, Quaternion.identity);
-        FirebulletObject.AddForce(cameraPostion_z * 1, ForceMode.Impulse);
+        Rigidbody firebulletObject = Instantiate(shootManger.FireBullet.GetComponent<Rigidbody>(), shootManger.transform.position, Quaternion.identity);
+        firebulletObject.AddForce(cameraPostion_z * 1, ForceMode.Impulse);
         Ray ray = Camera.main.ScreenPointToRay(shootManger.ScreenCenterPoint);
         RaycastHit hit;
         _buttonAudio.PlayOneShot(shootManger.FireSound);
