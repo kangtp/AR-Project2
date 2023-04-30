@@ -117,8 +117,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotateSpd: 1000
   damage: 3
-  killCount: {fileID: 0}
-  player: {fileID: 0}
+  KillCount: {fileID: 0}
 --- !u!64 &6476927446860700364
 MeshCollider:
   m_ObjectHideFlags: 0

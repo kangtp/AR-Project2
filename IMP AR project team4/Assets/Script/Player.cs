@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
     private LifeManager lifeManger;
     public int kill = 0;
     private Scene targetScene;
-   
+    public Text killText;
 
     //for Camera Shake
     //public float shakeTime = 1.0f;
@@ -25,7 +25,7 @@ public class Player : MonoBehaviour
   
     void Start()
     {
-     
+       
         lifeManger = GameObject.FindObjectOfType<LifeManager>();
         //cam = GameObject.FindGameObjectWithTag("MainCamera").transform;
         //if (targetScene != null)

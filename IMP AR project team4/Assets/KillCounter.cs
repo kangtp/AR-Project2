@@ -7,7 +7,7 @@ public class KillCounter : MonoBehaviour
 {
     // Start is called before the first frame update
     public Player player;
-    private Text killCountText;
+    public Text killCountText;
 
     private void Start()
     {

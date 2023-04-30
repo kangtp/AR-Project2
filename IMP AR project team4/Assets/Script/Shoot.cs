@@ -35,12 +35,15 @@ public class Shoot : MonoBehaviour
     public Vector2 ScreenCenterPoint;// it is center of phone
     public float speed; //bullet speed
 
+
+
+
     public Camera _ArCamera; // because to do Phycis.raycast
 
 
     void Start()
     {
-        ScreenCenterPoint = new Vector2(_ArCamera.pixelWidth / 2, _ArCamera.pixelHeight / 2);
+        ScreenCenterPoint = new Vector2(Camera.main.pixelWidth / 2, _ArCamera.pixelHeight / 2);
         _audioSource = GetComponent<AudioSource>();
         cameraPostion_z = Camera.main.transform.forward;
     }
@@ -53,6 +56,8 @@ public class Shoot : MonoBehaviour
             touchPressed = true;
             Debug.Log("touch Pressed");
         }
+        cameraPostion_z = Camera.main.transform.forward;
+        ScreenCenterPoint = new Vector2(Camera.main.pixelWidth / 2, Camera.main.pixelHeight / 2);
 
     }
     private void FixedUpdate()
@@ -90,31 +95,16 @@ public class Shoot : MonoBehaviour
     public void Shooting()
     {
 
-        Vector3 cameraPostion_z = Camera.main.transform.forward;
+        cameraPostion_z = Camera.main.transform.forward;
 
         Ray ray = Camera.main.ScreenPointToRay(ScreenCenterPoint);
         RaycastHit hit;
         _audioSource.PlayOneShot(shootingSound);
         if (Physics.Raycast(ray, out hit, range, shootableMask))
         {
-            //if(hit.collider.CompareTag("Boss"))
-            //{
+            
 
-
-            //}
-            //else if(hit.collider.CompareTag("FireEnemy"))
-            //{
-
-            //}
-            //else if(hit.collider.CompareTag("WaterEnemy"))
-            //{
-
-            //}
-            //else if(hit.collider.CompareTag("GroundEnemy"))
-            //{
-
-
-            //}
+            
             if (hit.collider.tag == "fireObject")
             {
                 //get fire skill and turn on the fire UI light
@@ -139,7 +129,7 @@ public class Shoot : MonoBehaviour
             }
 
         }
-        Rigidbody bulletObject = Instantiate(bullet.GetComponent<Rigidbody>(), transform.position, bullet.transform.rotation);
+        Rigidbody bulletObject = Instantiate(bullet.GetComponent<Rigidbody>(), Camera.main.transform.position, bullet.transform.rotation);
         bulletObject.AddForce(cameraPostion_z * speed, ForceMode.Impulse);
     }
 

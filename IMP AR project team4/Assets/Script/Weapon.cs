@@ -9,17 +9,19 @@ public class Weapon : MonoBehaviour
     public float rotateSpd;
     float bulletTime;
     public int damage = 3;
-    Text killCount;
+    
 
     Player player;
     private int killcount;
+    public GameObject KillCount;
 
     void Start()
     {
         player = GameObject.Find("Player").GetComponent<Player>();
         bulletTime = Time.time;
-        killCount = GameObject.Find("KillCount").GetComponent<Text>();
-       
+        
+
+
     }
 
     // Update is called once per frame
@@ -42,7 +44,7 @@ public class Weapon : MonoBehaviour
             {
                 Destroy(other.gameObject);
                 killcount++;
-                killCount.GetComponent<KillCounter>().UpdateKillCount(player.kill);
+                KillCount.GetComponent<KillCounter>().UpdateKillCount(player.kill);
             }
         }
         else if (other.CompareTag("IceMonster"))
@@ -54,7 +56,7 @@ public class Weapon : MonoBehaviour
             {
                 Destroy(other.gameObject);
                 player.kill++;
-                killCount.GetComponent<KillCounter>().UpdateKillCount(player.kill);
+                KillCount.GetComponent<KillCounter>().UpdateKillCount(player.kill);
             }
         }
         else if (other.CompareTag("FireMonster"))
@@ -66,7 +68,7 @@ public class Weapon : MonoBehaviour
             {
                 Destroy(other.gameObject);
                 player.kill++;
-                killCount.GetComponent<KillCounter>().UpdateKillCount(player.kill);
+                KillCount.GetComponent<KillCounter>().UpdateKillCount(player.kill);
             }
         }
         else if (other.CompareTag("Enemy"))
@@ -74,7 +76,7 @@ public class Weapon : MonoBehaviour
             Debug.Log("I hit Enemy");
             Destroy(other.gameObject);
             player.kill++;
-            killCount.GetComponent<KillCounter>().UpdateKillCount(player.kill);
+            KillCount.GetComponent<KillCounter>().UpdateKillCount(player.kill);
         }
     }
     private void OnTriggerExit(Collider other)
