@@ -10,7 +10,7 @@ public class Water : MonoBehaviour
     private Button waterButton;
     private Image icon; // icon
     private Color imgColor;
-    public bool waterCheck = false; // 이미지를 인식하면 true로 바뀜 이것은 나중에 합칠때 구현  일단은 테스트니깐 true
+    public bool waterCheck = false; 
     public Shoot shootManger;
     private AudioSource _buttonAudio;
 

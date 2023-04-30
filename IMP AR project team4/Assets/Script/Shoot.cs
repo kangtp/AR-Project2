@@ -15,9 +15,7 @@ public class Shoot : MonoBehaviour
     public Texture2D crosshair; // crosshair prefeb
 
     public EventSystem _eventSystem;
-    public Button FireButton;
-    public Button WaterButton;
-    public Button ElectricButton;
+    
 
     public AudioClip shootingSound;
     public AudioClip FireSound;
@@ -38,12 +36,11 @@ public class Shoot : MonoBehaviour
 
 
 
-    public Camera _ArCamera; // because to do Phycis.raycast
 
 
     void Start()
     {
-        ScreenCenterPoint = new Vector2(Camera.main.pixelWidth / 2, _ArCamera.pixelHeight / 2);
+        ScreenCenterPoint = new Vector2(Camera.main.pixelWidth / 2, Camera.main.pixelHeight / 2);
         _audioSource = GetComponent<AudioSource>();
         cameraPostion_z = Camera.main.transform.forward;
     }
@@ -51,64 +48,64 @@ public class Shoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
+        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)// when touch screen
         {
-            if (EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId) && Input.touchCount==1)
+            if (EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId) && Input.touchCount==1)// if touch ui
             {
                 Debug.Log("button");
                 
             }
-            else
+            else // if not touch ui, then shooting 
             {
                
                 Shooting();
             }
 
         }
-        cameraPostion_z = Camera.main.transform.forward;
-        ScreenCenterPoint = new Vector2(Camera.main.pixelWidth / 2, Camera.main.pixelHeight / 2);
+        cameraPostion_z = Camera.main.transform.forward; // because it is exist to fire bullet 
+        ScreenCenterPoint = new Vector2(Camera.main.pixelWidth / 2, Camera.main.pixelHeight / 2); // crosshair position
 
     }
 
     public void Shooting()
     {
 
-        cameraPostion_z = Camera.main.transform.forward;
+        cameraPostion_z = Camera.main.transform.forward; // it is exist to shooting 
 
-        Ray ray = Camera.main.ScreenPointToRay(ScreenCenterPoint);
-        RaycastHit hit;
-        _audioSource.PlayOneShot(shootingSound);
-        if (Physics.Raycast(ray, out hit, range, shootableMask))
+        Ray ray = Camera.main.ScreenPointToRay(ScreenCenterPoint);// ray
+        RaycastHit hit;// hit 
+        _audioSource.PlayOneShot(shootingSound);// when fire bullet, play sound 
+        if (Physics.Raycast(ray, out hit, range, shootableMask))// raycast about skill
         {
             
-
+            // because it is exist to depend skill item , when skillitem on, you dont throw cunai
             
             if (hit.collider.tag == "fireObject")
             {
                 //get fire skill and turn on the fire UI light
                 Debug.Log("Fire Skil Get!");
-                //경덕이가 만든 스킬 유아이 온
-                hit.collider.GetComponent<FireObject>().getFireSkill();
+                hit.collider.GetComponent<FireObject>().getFireSkill(); //FireSkill get 
                 return;
             }
 
             if (hit.collider.tag == "waterObject")
             {
                 Debug.Log("Water Skill Get!");
-                hit.collider.GetComponent<waterObject>().getWaterSkill();
+                hit.collider.GetComponent<waterObject>().getWaterSkill();//WaterSkill get
                 return;
             }
+
 
             if (hit.collider.tag == "electricityObject")
             {
                 Debug.Log("Electricity Skill Get!");
-                hit.collider.GetComponent<ElectricityObject>().getElectricitySkill();
+                hit.collider.GetComponent<ElectricityObject>().getElectricitySkill();//when recognize electirc img 
                 return;
             }
 
         }
-        Rigidbody bulletObject = Instantiate(bullet.GetComponent<Rigidbody>(), Camera.main.transform.position, bullet.transform.rotation);
-        bulletObject.AddForce(cameraPostion_z * speed, ForceMode.Impulse);
+        Rigidbody bulletObject = Instantiate(bullet.GetComponent<Rigidbody>(), Camera.main.transform.position, bullet.transform.rotation); //if dont recoginized img , then just shooting
+        bulletObject.AddForce(cameraPostion_z * speed, ForceMode.Impulse); // addforce for bullet
     }
 
 
@@ -118,7 +115,7 @@ public class Shoot : MonoBehaviour
 
 
 
-    private void OnGUI()
+    private void OnGUI() // it is exist to visulaize croosshair to screenCenter 
     {
         float xmin = (Screen.width / 2) - (crosshairSize / 2);
         float ymin = (Screen.height / 2) - (crosshairSize / 2);
