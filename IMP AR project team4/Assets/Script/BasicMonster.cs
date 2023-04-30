@@ -39,7 +39,6 @@ public class BasicMonster : MonoBehaviour
             yield return new WaitForSeconds(randomValue);
             if (!animator.GetBool("Attack") && CanAttack)
             {
-                Debug.Log("ads");
                 animator.SetBool("Attack", true);
                 GameObject go = Instantiate(Bullet, AttackArea.position, Quaternion.identity);
                 go.transform.parent = AttackArea.transform;

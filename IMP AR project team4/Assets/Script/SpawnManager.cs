@@ -20,7 +20,7 @@ public class SpawnManager : MonoBehaviour
     void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player").transform;
-        transform.position = Player.position;
+        //transform.position = Player.position;
         StartCoroutine("SpawnBasic");
     }
 

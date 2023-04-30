@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657815, g: 0.49641192, b: 0.57481617, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -572,7 +572,7 @@ MonoBehaviour:
   WaterSound: {fileID: 8300000, guid: 0d03ec0a66fdeb04e897f49ed71d6022, type: 3}
   ElectricSound: {fileID: 8300000, guid: 6ea2fe844e5ab764bb84ee47dd5173aa, type: 3}
   cameraPostion_z: {x: 0, y: 0, z: 0}
-  crosshairSize: 5
+  crosshairSize: 30
   range: 20
   shootableMask:
     serializedVersion: 2
