@@ -606,13 +606,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  attackDistance: 2
-  Speed: 1.5
+  attackDistance: 3.5
+  Speed: 1
   AttackTimemin: 2
   AttackTimemax: 4
   Bullet: {fileID: 7311853122663367725, guid: cd9fab0a339e7458ba54542149a8abb5, type: 3}
   AttackArea: {fileID: 1150685011}
-  audioClip: {fileID: 8300000, guid: 4c77c8b45c9064108bcdcb1984d4294c, type: 3}
+  audioClip:
+  - {fileID: 8300000, guid: 4c77c8b45c9064108bcdcb1984d4294c, type: 3}
+  - {fileID: 8300000, guid: 3e6c5466cab5b42cfa05035d476e0966, type: 3}
 --- !u!135 &8634604372197823842
 SphereCollider:
   m_ObjectHideFlags: 0

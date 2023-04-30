@@ -10,7 +10,7 @@ public class BasicMonster : MonoBehaviour
 
     private Animator animator;
 
-    public float attackDistance = 2f; // 공격 가능한 거리
+    public float attackDistance = 6f; // 공격 가능한 거리
 
     public float Speed = 2.0f;
 
@@ -22,14 +22,14 @@ public class BasicMonster : MonoBehaviour
     public Transform AttackArea;
 
     private AudioSource audioSource;
-    public AudioClip audioClip;
+    public AudioClip[] audioClip;
     
     private bool CanAttack = false;
 
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
-        audioSource.clip = audioClip;
+        audioSource.clip = audioClip[0];
         CanAttack = false;
         animator = GetComponent<Animator>();
         player = GameObject.FindGameObjectWithTag("Player");
@@ -76,6 +76,5 @@ public class BasicMonster : MonoBehaviour
         {
             CanAttack = true;
         }
-
     }
 }

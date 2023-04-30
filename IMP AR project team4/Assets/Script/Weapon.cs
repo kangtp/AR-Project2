@@ -9,6 +9,8 @@ public class Weapon : MonoBehaviour
     public float rotateSpd;
     float bulletTime;
     public int damage = 3;
+    public AudioClip audioClip;
+    private AudioSource audioSource;
     
 
     Player player;
@@ -17,6 +19,7 @@ public class Weapon : MonoBehaviour
 
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         player = GameObject.Find("Player").GetComponent<Player>();
         bulletTime = Time.time;
         
@@ -74,9 +77,11 @@ public class Weapon : MonoBehaviour
         else if (other.CompareTag("Enemy"))
         {
             Debug.Log("I hit Enemy");
+            audioSource.clip = audioClip;
+            audioSource.Play();
+            other.GetComponentInParent<SpawnManager>().NumofBasicMonster -= 1;
+
             Destroy(other.gameObject);
-            player.kill++;
-            KillCount.GetComponent<KillCounter>().UpdateKillCount(player.kill);
         }
     }
     private void OnTriggerExit(Collider other)

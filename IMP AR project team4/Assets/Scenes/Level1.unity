@@ -1515,6 +1515,21 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2733249030429474900, guid: e84a51c60f36e4017aa1796e776d2ac3,
         type: 3}
+      propertyPath: SpawnArea
+      value: 
+      objectReference: {fileID: 2053584947}
+    - target: {fileID: 2733249030429474900, guid: e84a51c60f36e4017aa1796e776d2ac3,
+        type: 3}
+      propertyPath: maxRadius
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2733249030429474900, guid: e84a51c60f36e4017aa1796e776d2ac3,
+        type: 3}
+      propertyPath: minRadius
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2733249030429474900, guid: e84a51c60f36e4017aa1796e776d2ac3,
+        type: 3}
       propertyPath: BossMonster
       value: 
       objectReference: {fileID: 3981948455180800048, guid: 2e02e76b6daa941c7a95cab55c04498c,
@@ -1528,7 +1543,7 @@ PrefabInstance:
     - target: {fileID: 2733249030429474901, guid: e84a51c60f36e4017aa1796e776d2ac3,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2733249030429474901, guid: e84a51c60f36e4017aa1796e776d2ac3,
         type: 3}
@@ -2462,6 +2477,37 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &2053584946
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2053584947}
+  m_Layer: 0
+  m_Name: SpawnArea
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2053584947
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2053584946}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 7}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &212175866532230322
 Transform:
   m_ObjectHideFlags: 0

@@ -50,6 +50,6 @@ MonoBehaviour:
     type: 3}
   Player: {fileID: 0}
   spawnHeight: 2
-  minRadius: 10
-  maxRadius: 11
+  minRadius: 12
+  maxRadius: 15
   NumofBasicMonster: 10

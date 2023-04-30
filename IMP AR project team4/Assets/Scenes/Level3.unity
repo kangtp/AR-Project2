@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657815, g: 0.49641192, b: 0.57481617, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -937,6 +937,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 873646252}
+  killCountText: {fileID: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -1309,6 +1310,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hurtAudio: {fileID: 873646251}
   kill: 0
+  killText: {fileID: 0}
   bloodScreen: {fileID: 1600505105}
 --- !u!65 &873646253
 BoxCollider:
@@ -1513,6 +1515,21 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2733249030429474900, guid: e84a51c60f36e4017aa1796e776d2ac3,
         type: 3}
+      propertyPath: SpawnArea
+      value: 
+      objectReference: {fileID: 1117507230}
+    - target: {fileID: 2733249030429474900, guid: e84a51c60f36e4017aa1796e776d2ac3,
+        type: 3}
+      propertyPath: maxRadius
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2733249030429474900, guid: e84a51c60f36e4017aa1796e776d2ac3,
+        type: 3}
+      propertyPath: minRadius
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2733249030429474900, guid: e84a51c60f36e4017aa1796e776d2ac3,
+        type: 3}
       propertyPath: BasicMonster
       value: 
       objectReference: {fileID: 8337648793018693131, guid: 204d5601ab43f45d8b6466599a1b7b97,
@@ -1520,7 +1537,7 @@ PrefabInstance:
     - target: {fileID: 2733249030429474901, guid: e84a51c60f36e4017aa1796e776d2ac3,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2733249030429474901, guid: e84a51c60f36e4017aa1796e776d2ac3,
         type: 3}
@@ -1639,6 +1656,37 @@ MonoBehaviour:
   - {fileID: 1435486695}
   - {fileID: 470273976}
   - {fileID: 364404348}
+--- !u!1 &1117507229
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1117507230}
+  m_Layer: 0
+  m_Name: SpawnArea
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1117507230
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1117507229}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 9.14}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1258343732
 GameObject:
   m_ObjectHideFlags: 0
