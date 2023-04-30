@@ -42,7 +42,7 @@ public class Weapon : MonoBehaviour
             if (other.GetComponent<EarthMonster>().getHp() <= 0)
             {
                 Destroy(other.gameObject);
-                SceneManager.LoadScene("Clear");
+                StartCoroutine("Clear_");
             }
         }
         else if (other.CompareTag("IceMonster"))
@@ -53,8 +53,7 @@ public class Weapon : MonoBehaviour
             if (other.GetComponent<IceMonster>().getHp() <= 0)
             {
                 Destroy(other.gameObject);
-                SceneManager.LoadScene("Clear");
-
+                StartCoroutine("Clear_");
             }
         }
         else if (other.CompareTag("FireMonster"))
@@ -65,7 +64,7 @@ public class Weapon : MonoBehaviour
             if (other.GetComponent<FireMonster>().getHp() <= 0)
             {
                 Destroy(other.gameObject);
-                SceneManager.LoadScene("Clear");
+                StartCoroutine("Clear_");
 
             }
         }
@@ -86,4 +85,11 @@ public class Weapon : MonoBehaviour
         }
     }
 
+    IEnumerator Clear_()
+    {
+        audioSource.Play();
+        yield return new WaitForSeconds(1.0f);
+        SceneManager.LoadScene("Clear");
+
+    }
 }

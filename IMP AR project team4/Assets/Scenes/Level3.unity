@@ -568,9 +568,9 @@ MonoBehaviour:
   WaterButton: {fileID: 1446641550}
   ElectricButton: {fileID: 815675358}
   shootingSound: {fileID: 8300000, guid: 159a86c7305c4674a8074c463e9f3a55, type: 3}
-  FireSound: {fileID: 8300000, guid: 1f05c44fdd965d64985893b8cd17ce41, type: 3}
-  WaterSound: {fileID: 8300000, guid: 0d03ec0a66fdeb04e897f49ed71d6022, type: 3}
-  ElectricSound: {fileID: 8300000, guid: 6ea2fe844e5ab764bb84ee47dd5173aa, type: 3}
+  FireSound: {fileID: 8300000, guid: 4aaece02dad8c435cabbc90695a7588b, type: 3}
+  WaterSound: {fileID: 8300000, guid: 502266ece51f74f0cafc1893ca5e26d9, type: 3}
+  ElectricSound: {fileID: 8300000, guid: 93ea0486cb01b4e8f824f4ca0645b8bb, type: 3}
   cameraPostion_z: {x: 0, y: 0, z: 0}
   crosshairSize: 30
   range: 20
@@ -1309,7 +1309,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hurtAudio: {fileID: 873646251}
-  kill: 0
   killText: {fileID: 0}
   bloodScreen: {fileID: 1600505105}
 --- !u!65 &873646253

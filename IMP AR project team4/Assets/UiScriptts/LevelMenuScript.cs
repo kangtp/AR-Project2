@@ -25,12 +25,12 @@ public class LevelMenuScript : MonoBehaviour
    public void PlayLevel2()
    {
 		  //load the first Level
-		  SceneManager.LoadScene("Level 2");
+		  SceneManager.LoadScene("Level2");
    }
 
    public void PlayLevel3()
    {
 		  //load the first Level
-		  SceneManager.LoadScene("Level 3");
+		  SceneManager.LoadScene("Level3");
    }
 }
