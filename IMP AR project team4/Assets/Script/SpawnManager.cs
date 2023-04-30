@@ -20,9 +20,12 @@ public class SpawnManager : MonoBehaviour
 
     public int NumofBasicMonster = 10;
 
+    private bool Stop = false;
+
     private int CycleMon;
     void Start()
     {
+        Stop = true;
         CycleMon = NumofBasicMonster;
         spawnHeight = 2f;
         Player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -33,9 +36,10 @@ public class SpawnManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(this.gameObject.transform.childCount < 1 && NumofBasicMonster < 1)
+        if(this.gameObject.transform.childCount < 1 && NumofBasicMonster < 1 && Stop)
         {
             SpawnBoss();
+            Stop = false;
         }
     }
 
