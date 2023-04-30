@@ -6,7 +6,7 @@ public class ElectricityObject : MonoBehaviour
 {
     public AudioSource audioSource;
     public GameObject electricSkill;
-
+    private int damage;
     public void getElectricitySkill()
     {
         audioSource.Play();
@@ -22,6 +22,28 @@ public class ElectricityObject : MonoBehaviour
             GameObject go = Instantiate(electricSkill, other.transform.position, electricSkill.transform.rotation);
             Destroy(go, 2.0f);
             Destroy(gameObject);
+            if (other.CompareTag("RockMonster"))
+            {
+                damage = 30;
+                other.GetComponent<EarthMonster>().HPControl(damage);
+
+            }
+            else if (other.CompareTag("IceMonster"))
+            {
+                damage = 0;
+                other.GetComponent<IceMonster>().HPControl(damage);
+
+            }
+            else if (other.CompareTag("FireMonster"))
+            {
+                damage = 10;
+                other.GetComponent<FireMonster>().HPControl(damage);
+
+            }
+            else if (other.CompareTag("Enemy"))
+            {
+                Destroy(other.gameObject);
+            }
         }
     }
 }

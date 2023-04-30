@@ -7,7 +7,7 @@ public class MusicScript : MonoBehaviour
 {
     //reference to audio source component
      public AudioSource myMusic;
-     public Slider Volume;
+     //public Slider Volume;
 
     //music volume variable that will be modified by slider
     //private float musicVolume =1f;
@@ -23,8 +23,11 @@ public class MusicScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //setting volume option of audio source to be equal to music volume
-      myMusic.volume=Volume.value;
+        if (myMusic != null)
+        {
+            //setting volume option of audio source to be equal to music volume
+            myMusic.volume = 1.0f;
+        }
     }
 
 }

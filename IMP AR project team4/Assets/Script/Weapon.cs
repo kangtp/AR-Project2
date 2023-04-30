@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.SceneManagement;
 public class Weapon : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -11,20 +11,16 @@ public class Weapon : MonoBehaviour
     public int damage = 3;
     public AudioClip audioClip;
     private AudioSource audioSource;
-    
 
     Player player;
-    private int killcount;
-    public GameObject KillCount;
+
+
 
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
         player = GameObject.Find("Player").GetComponent<Player>();
         bulletTime = Time.time;
-        
-
-
     }
 
     // Update is called once per frame
@@ -46,32 +42,31 @@ public class Weapon : MonoBehaviour
             if (other.GetComponent<EarthMonster>().getHp() <= 0)
             {
                 Destroy(other.gameObject);
-                killcount++;
-                KillCount.GetComponent<KillCounter>().UpdateKillCount(player.kill);
+                SceneManager.LoadScene("Clear");
             }
         }
         else if (other.CompareTag("IceMonster"))
         {
             Debug.Log("I hit IceMonster");
-               other.GetComponent<EarthMonster>().HPControl(damage);
+            other.GetComponent<IceMonster>().HPControl(damage);
 
             if (other.GetComponent<IceMonster>().getHp() <= 0)
             {
                 Destroy(other.gameObject);
-                player.kill++;
-                KillCount.GetComponent<KillCounter>().UpdateKillCount(player.kill);
+                SceneManager.LoadScene("Clear");
+
             }
         }
         else if (other.CompareTag("FireMonster"))
         {
             Debug.Log("I hit FireMonster");
-               other.GetComponent<EarthMonster>().HPControl(damage);
+            other.GetComponent<FireMonster>().HPControl(damage);
 
             if (other.GetComponent<FireMonster>().getHp() <= 0)
             {
                 Destroy(other.gameObject);
-                player.kill++;
-                KillCount.GetComponent<KillCounter>().UpdateKillCount(player.kill);
+                SceneManager.LoadScene("Clear");
+
             }
         }
         else if (other.CompareTag("Enemy"))
@@ -80,13 +75,12 @@ public class Weapon : MonoBehaviour
             audioSource.clip = audioClip;
             audioSource.Play();
             other.GetComponentInParent<SpawnManager>().NumofBasicMonster -= 1;
-
             Destroy(other.gameObject);
         }
     }
     private void OnTriggerExit(Collider other)
     {
-        if(other.CompareTag("Enemy") || other.CompareTag("RockMonster") || other.CompareTag("FireMonster") || other.CompareTag("IceMonster"))
+        if (other.CompareTag("Enemy") || other.CompareTag("RockMonster") || other.CompareTag("FireMonster") || other.CompareTag("IceMonster"))
         {
             Destroy(gameObject);
         }
