@@ -58,12 +58,9 @@ public class Player : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Meteor"))
         {
-            
-           
-            
                 health--;
                 lifeManger.reloadLife(health);
-
+                Destroy(other.gameObject);
 
                 hurtAudio.Play();
 

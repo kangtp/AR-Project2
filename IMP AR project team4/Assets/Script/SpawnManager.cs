@@ -19,6 +19,7 @@ public class SpawnManager : MonoBehaviour
     public int NumofBasicMonster = 10;
     void Start()
     {
+        Player = GameObject.FindGameObjectWithTag("Player").transform;
         transform.position = Player.position;
         StartCoroutine("SpawnBasic");
     }

@@ -36,9 +36,9 @@ public class Weapon : MonoBehaviour
         if (other.CompareTag("RockMonster"))
         {
             Debug.Log("I hit RockMonster");
-            other.GetComponent<EarthMonster>().HP -= damage;
+            other.GetComponent<EarthMonster>().HPControl(damage);
 
-            if (other.GetComponent<EarthMonster>().HP <= 0)
+            if (other.GetComponent<EarthMonster>().getHp() <= 0)
             {
                 Destroy(other.gameObject);
                 killcount++;
@@ -48,9 +48,9 @@ public class Weapon : MonoBehaviour
         else if (other.CompareTag("IceMonster"))
         {
             Debug.Log("I hit IceMonster");
-            other.GetComponent<IceMonster>().HP -= damage;
+               other.GetComponent<EarthMonster>().HPControl(damage);
 
-            if (other.GetComponent<IceMonster>().HP <= 0)
+            if (other.GetComponent<IceMonster>().getHp() <= 0)
             {
                 Destroy(other.gameObject);
                 player.kill++;
@@ -60,9 +60,9 @@ public class Weapon : MonoBehaviour
         else if (other.CompareTag("FireMonster"))
         {
             Debug.Log("I hit FireMonster");
-            other.GetComponent<FireMonster>().HP -= damage;
+               other.GetComponent<EarthMonster>().HPControl(damage);
 
-            if (other.GetComponent<FireMonster>().HP <= 0)
+            if (other.GetComponent<FireMonster>().getHp() <= 0)
             {
                 Destroy(other.gameObject);
                 player.kill++;

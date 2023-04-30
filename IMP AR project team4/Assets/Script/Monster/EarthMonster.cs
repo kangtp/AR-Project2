@@ -75,6 +75,17 @@ public class EarthMonster : MonoBehaviour
         }
     }
 
+    public void HPControl(int Deal)
+    {
+        currentHp -= Deal;
+        HP_Bar.UpdateHpbar(HP,currentHp);
+    }
+
+    public int getHp()
+    {
+        return currentHp;
+    }
+
     IEnumerator BasicAttack()
     {
         while (true)
