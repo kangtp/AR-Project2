@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
     private int health = 5;
     private LifeManager lifeManger;
     private Scene targetScene;
-    public Text killText;
+   
 
     public Image bloodScreen;
 

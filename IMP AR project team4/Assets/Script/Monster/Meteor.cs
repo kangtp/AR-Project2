@@ -6,7 +6,7 @@ public class Meteor : MonoBehaviour
 {
     public bool canShoot = false;
     private Transform GoalPosition;
-    public float Speed = 2.0f;
+    public float Speed = 0.5f;
     private Vector3 forposi;
     // Start is called before the first frame update
     void Start()

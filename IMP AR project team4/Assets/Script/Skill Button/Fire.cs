@@ -19,7 +19,7 @@ public class Fire : MonoBehaviour
     private void Awake()
     {
         fireButton = GetComponent<Button>();
-        fireButton.onClick.AddListener(ShootWater);
+        fireButton.onClick.AddListener(ShootFire);
         _buttonAudio = FindObjectOfType<AudioSource>();
         icon = GetComponent<Image>();
         imgColor = icon.color;
@@ -58,13 +58,13 @@ public class Fire : MonoBehaviour
         }
 
     }
-    public void ShootWater()
+    public void ShootFire()
     {
         Debug.Log("FireButton cliceked");
         if (fireCheck)
         {
             Debug.Log("Fire");
-            WaterShooting();
+            FireShooting();
             fireCheck = false;
             //Fire check is false 
         }
@@ -73,10 +73,10 @@ public class Fire : MonoBehaviour
             //No change
         }
     }
-    public void WaterShooting()
+    public void FireShooting()
     {
         Vector3 cameraPostion_z = Camera.main.transform.forward;
-        Rigidbody firebulletObject = Instantiate(shootManger.FireBullet.GetComponent<Rigidbody>(), shootManger.transform.position, Quaternion.identity);
+        Rigidbody firebulletObject = Instantiate(shootManger.FireBullet.GetComponent<Rigidbody>(), Camera.main.transform.position, Quaternion.identity);
         firebulletObject.AddForce(cameraPostion_z * 1, ForceMode.Impulse);
         Ray ray = Camera.main.ScreenPointToRay(shootManger.ScreenCenterPoint);
         RaycastHit hit;
@@ -85,30 +85,10 @@ public class Fire : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit, shootManger.range, shootManger.shootableMask))
         {
-            //if (hit.collider.CompareTag("Boss"))
-            //{
-
-            //}
-            //else if (hit.collider.CompareTag("FireEnemy"))
-            //{
-
-            //}
-            //else if (hit.collider.CompareTag("WaterEnemy"))
-            //{
-
-            //}
-            //else if (hit.collider.CompareTag("GroundEnemy"))
-            //{
-
-
-            //}
-            //else
-            //{
-
-            //}
+            
         }
 
-
+        Destroy(firebulletObject, 3.0f);
 
 
     }

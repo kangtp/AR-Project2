@@ -7,12 +7,25 @@ public class ElectricityObject : MonoBehaviour
     public AudioSource audioSource;
     public GameObject electricSkill;
     private int damage;
+    float bulletTime;
+
+    private void Start()
+    {
+        bulletTime = Time.time;
+    }
     public void getElectricitySkill()
     {
         audioSource.Play();
         Electricity ground = FindObjectOfType<Electricity>();
         ground.electricCheck = true;
         Debug.Log("전기 스킬 얻었다");
+    }
+    private void Update()
+    {
+        if (Time.time - bulletTime > 3f)
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void OnTriggerEnter(Collider other)

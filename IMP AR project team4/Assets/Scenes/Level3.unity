@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657815, g: 0.49641192, b: 0.57481617, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -401,7 +401,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1048d3abd7282f249857ea0350aaf314, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireCheck: 1
+  fireCheck: 0
   shootManger: {fileID: 388525036}
 --- !u!1 &364404346
 GameObject:
@@ -801,7 +801,7 @@ GameObject:
   - component: {fileID: 524497716}
   - component: {fileID: 524497718}
   m_Layer: 5
-  m_Name: KillCount
+  m_Name: Stage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -824,7 +824,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 207, y: 21}
+  m_AnchoredPosition: {x: 186.6, y: 16.4}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &524497716
@@ -847,10 +847,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: Stage 3
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e7bdfabebbad45c4fabba1e7fc7c32ac, type: 2}
+  m_sharedMaterial: {fileID: -5405788478251688428, guid: e7bdfabebbad45c4fabba1e7fc7c32ac,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1178,7 +1179,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2947620de19f70f418fb9f4775a65e79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  electricCheck: 1
+  electricCheck: 0
   shootManger: {fileID: 388525036}
 --- !u!1 &873646250
 GameObject:
@@ -1463,8 +1464,8 @@ RectTransform:
   m_Father: {fileID: 1613952761}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1500,8 +1501,8 @@ RectTransform:
   m_Father: {fileID: 1613952761}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1533,6 +1534,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8337648793018693131, guid: 204d5601ab43f45d8b6466599a1b7b97,
         type: 3}
+    - target: {fileID: 2733249030429474900, guid: e84a51c60f36e4017aa1796e776d2ac3,
+        type: 3}
+      propertyPath: NumofBasicMonster
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 2733249030429474901, guid: e84a51c60f36e4017aa1796e776d2ac3,
         type: 3}
       propertyPath: m_RootOrder
@@ -1818,7 +1824,7 @@ RectTransform:
   m_GameObject: {fileID: 1417359261}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1689820102}
@@ -1826,7 +1832,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -39, y: -26}
   m_SizeDelta: {x: 100, y: 100.7885}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &1417359263
@@ -1849,7 +1855,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ce75bab7b7346c84cb61dc042cb6e632, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a0c233d84576e424f983d02f33a4e3b3, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2089,7 +2095,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52919c1b4a605fc449fa4579d0a6c741, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waterCheck: 1
+  waterCheck: 0
   shootManger: {fileID: 388525036}
 --- !u!1 &1600505103
 GameObject:
@@ -2292,7 +2298,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1689820102}
   m_Layer: 5
-  m_Name: Kill
+  m_Name: Stage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

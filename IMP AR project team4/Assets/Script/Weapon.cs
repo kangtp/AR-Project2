@@ -10,6 +10,7 @@ public class Weapon : MonoBehaviour
     float bulletTime;
     public int damage = 3;
     public AudioClip audioClip;
+    public AudioClip audioClip2;
     private AudioSource audioSource;
 
     Player player;
@@ -87,6 +88,7 @@ public class Weapon : MonoBehaviour
 
     IEnumerator Clear_()
     {
+        audioSource.clip = audioClip2;
         audioSource.Play();
         yield return new WaitForSeconds(1.0f);
         SceneManager.LoadScene("Clear");

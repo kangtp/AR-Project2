@@ -10,7 +10,7 @@ public class Electricity : MonoBehaviour
     private Button electircButton;
     private Image icon; // icon
     private Color imgColor;
-    public bool electricCheck = false; // 이미지를 인식하면 true로 바뀜 이것은 나중에 합칠때 구현  일단은 테스트니깐 true
+    public bool electricCheck; // 이미지를 인식하면 true로 바뀜 이것은 나중에 합칠때 구현  일단은 테스트니깐 true
     public Shoot shootManger;
     private AudioSource _buttonAudio;
 
@@ -76,8 +76,8 @@ public class Electricity : MonoBehaviour
     public void ElectricShooting()
     {
         Vector3 cameraPostion_z = Camera.main.transform.forward;
-        Rigidbody FirebulletObject = Instantiate(shootManger.ElectricBullet.GetComponent<Rigidbody>(), shootManger.transform.position, Quaternion.identity);
-        FirebulletObject.AddForce(cameraPostion_z * 1, ForceMode.Impulse);
+        Rigidbody electricBulletObject = Instantiate(shootManger.ElectricBullet.GetComponent<Rigidbody>(), Camera.main.transform.position, Quaternion.identity);
+        electricBulletObject.AddForce(cameraPostion_z * 1, ForceMode.Impulse);
         Ray ray = Camera.main.ScreenPointToRay(shootManger.ScreenCenterPoint);
         RaycastHit hit;
         _buttonAudio.PlayOneShot(shootManger.ElectricSound);
@@ -85,30 +85,10 @@ public class Electricity : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit, shootManger.range, shootManger.shootableMask))
         {
-            //if (hit.collider.CompareTag("Boss"))
-            //{
-
-            //}
-            //else if (hit.collider.CompareTag("FireEnemy"))
-            //{
-
-            //}
-            //else if (hit.collider.CompareTag("WaterEnemy"))
-            //{
-
-            //}
-            //else if (hit.collider.CompareTag("GroundEnemy"))
-            //{
-
-
-            //}
-            //else
-            //{
-
-            //}
+            
         }
 
-
+        Destroy(electricBulletObject, 3.0f);
 
 
     }

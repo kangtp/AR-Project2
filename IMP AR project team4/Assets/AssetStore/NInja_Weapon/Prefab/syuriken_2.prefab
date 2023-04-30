@@ -119,6 +119,7 @@ MonoBehaviour:
   rotateSpd: 1000
   damage: 3
   audioClip: {fileID: 8300000, guid: 3e6c5466cab5b42cfa05035d476e0966, type: 3}
+  audioClip2: {fileID: 8300000, guid: 35202bd5b28cb7947962e64ebfff4625, type: 3}
 --- !u!64 &6476927446860700364
 MeshCollider:
   m_ObjectHideFlags: 0

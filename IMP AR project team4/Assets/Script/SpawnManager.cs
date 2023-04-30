@@ -18,13 +18,28 @@ public class SpawnManager : MonoBehaviour
     public float minRadius;
     public float maxRadius;
 
-    public int NumofBasicMonster = 10;
+    public int NumofBasicMonster = 5;
+
+    public GameObject warningMessage;
 
     private bool Stop = false;
 
     private int CycleMon;
+
+    Fire fire;
+    Water water;
+    Electricity electricity;
+
+    private void Awake()
+    {
+        fire = FindObjectOfType<Fire>();
+        water = FindObjectOfType<Water>();
+        electricity = FindAnyObjectByType<Electricity>();
+    }
     void Start()
     {
+       
+
         Stop = true;
         CycleMon = NumofBasicMonster;
         spawnHeight = 2f;
@@ -36,10 +51,15 @@ public class SpawnManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(this.gameObject.transform.childCount < 1 && NumofBasicMonster < 1 && Stop)
+        if(this.gameObject.transform.childCount < 1 && NumofBasicMonster < 1 && Stop )
         {
-            SpawnBoss();
-            Stop = false;
+            warningMessage.SetActive(true);
+            if(fire.fireCheck == true && water.waterCheck == true && electricity.electricCheck == true)
+            {
+                warningMessage.SetActive(false);
+                SpawnBoss();
+                Stop = false;
+            }
         }
     }
 

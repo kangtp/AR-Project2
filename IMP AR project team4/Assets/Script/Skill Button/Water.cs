@@ -60,7 +60,7 @@ public class Water : MonoBehaviour
     }
     public void ShootWater()
     {
-        Debug.Log("FireButton cliceked");
+        Debug.Log("WaterButton cliceked");
         if (waterCheck)
         {
             Debug.Log("Fire");
@@ -76,7 +76,7 @@ public class Water : MonoBehaviour
     public void WaterShooting()
     {
         Vector3 cameraPostion_z = Camera.main.transform.forward;
-        Rigidbody WaterbulletObject = Instantiate(shootManger.WaterBullet.GetComponent<Rigidbody>(), shootManger.transform.position, Quaternion.identity);
+        Rigidbody WaterbulletObject = Instantiate(shootManger.WaterBullet.GetComponent<Rigidbody>(), Camera.main.transform.position, Quaternion.identity);
         WaterbulletObject.AddForce(cameraPostion_z * 1, ForceMode.Impulse);
         Ray ray = Camera.main.ScreenPointToRay(shootManger.ScreenCenterPoint);
         RaycastHit hit;
@@ -85,30 +85,10 @@ public class Water : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit, shootManger.range, shootManger.shootableMask))
         {
-            //if (hit.collider.CompareTag("Boss"))
-            //{
-
-            //}
-            //else if (hit.collider.CompareTag("FireEnemy"))
-            //{
-
-            //}
-            //else if (hit.collider.CompareTag("WaterEnemy"))
-            //{
-
-            //}
-            //else if (hit.collider.CompareTag("GroundEnemy"))
-            //{
-
-
-            //}
-            //else
-            //{
-
-            //}
+           
         }
 
-
+        Destroy(WaterbulletObject, 3.0f);
 
 
     }

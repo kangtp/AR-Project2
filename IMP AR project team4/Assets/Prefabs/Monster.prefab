@@ -607,7 +607,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   attackDistance: 3.5
-  Speed: 1
+  Speed: 0.5
   AttackTimemin: 2
   AttackTimemax: 4
   Bullet: {fileID: 7311853122663367725, guid: cd9fab0a339e7458ba54542149a8abb5, type: 3}
