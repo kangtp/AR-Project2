@@ -25,6 +25,9 @@ public class IceMonster : MonoBehaviour
 
     private int currentHp;
 
+    public AudioClip[] audioClip;
+    private AudioSource audioSource;
+
     [SerializeField] private MonsterHP_Bar HP_Bar;
 
 
@@ -33,6 +36,8 @@ public class IceMonster : MonoBehaviour
         Player = GameObject.FindGameObjectWithTag("Player");
         animator = GetComponent<Animator>();
         StartCoroutine("BasicAttack");
+        audioSource = GetComponent<AudioSource>();
+        audioSource.clip = audioClip[0];
 
         for (int i = 0; i < 3; i++)
         {
@@ -41,6 +46,7 @@ public class IceMonster : MonoBehaviour
         }
         Circle = this.gameObject.transform.GetChild(4).GetComponent<ParticleSystem>();
         Circle.Stop();
+        currentHp = HP;
         HP_Bar.UpdateHpbar(HP, currentHp);
         
     }
@@ -97,6 +103,7 @@ public class IceMonster : MonoBehaviour
             yield return new WaitForSeconds(randomValue);
             if (animator.GetInteger("Condition") != 2)
             {
+                audioSource.Play();
                 animator.SetInteger("Condition", 1);
                 int randomValueAttack = Random.Range(0, 3);
                 AttackArea[randomValueAttack].GetChild(0).GetComponent<Meteor>().SetBulletPosition(Player.transform);
@@ -114,6 +121,8 @@ public class IceMonster : MonoBehaviour
         {
             if (animator.GetInteger("Condition") != 2)
             {
+                audioSource.clip = audioClip[1];
+                audioSource.Play();
                 animator.SetInteger("Condition", 1);
                 GameObject go = Instantiate(ice_age,Player.transform.position,Quaternion.identity);
                 //StartCoroutine("SpawnMeteor");

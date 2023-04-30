@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657815, g: 0.49641192, b: 0.57481617, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -937,7 +937,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 873646252}
-  killCountText: {fileID: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -1310,7 +1309,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hurtAudio: {fileID: 873646251}
   kill: 0
-  killText: {fileID: 0}
   bloodScreen: {fileID: 1600505105}
 --- !u!65 &873646253
 BoxCollider:
@@ -1513,12 +1511,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2733249030429474900, guid: e84a51c60f36e4017aa1796e776d2ac3,
-        type: 3}
-      propertyPath: BossMonster
-      value: 
-      objectReference: {fileID: 3981948455180800048, guid: 2e02e76b6daa941c7a95cab55c04498c,
-        type: 3}
     - target: {fileID: 2733249030429474900, guid: e84a51c60f36e4017aa1796e776d2ac3,
         type: 3}
       propertyPath: BasicMonster

@@ -22,6 +22,9 @@ public class EarthMonster : MonoBehaviour
     public int HP = 100;
     private int currentHp;
 
+    public AudioClip audioClip;
+    private AudioSource audioSource;
+
     [SerializeField] private MonsterHP_Bar HP_Bar;
 
     void Start()
@@ -30,7 +33,8 @@ public class EarthMonster : MonoBehaviour
         Player = GameObject.FindGameObjectWithTag("Player");
         animator = GetComponent<Animator>();
         StartCoroutine("BasicAttack");
-
+        audioSource = GetComponent<AudioSource>();
+        audioSource.clip = audioClip;
         for (int i = 0; i < 3; i++)
         {
             GameObject go = Instantiate(Meteor, AttackArea[i].position, Quaternion.identity);
@@ -94,6 +98,7 @@ public class EarthMonster : MonoBehaviour
             yield return new WaitForSeconds(randomValue);
             if (animator.GetInteger("Condition") != 2)
             {
+                audioSource.Play();
                 animator.SetInteger("Condition", 1);
                 int randomValueAttack = Random.Range(0, 3);
                 AttackArea[randomValueAttack].GetChild(0).GetComponent<Meteor>().SetBulletPosition(Player.transform);
@@ -113,6 +118,7 @@ public class EarthMonster : MonoBehaviour
             yield return new WaitForSeconds(randomValue);
             if (animator.GetInteger("Condition") != 2)
             {
+                audioSource.Play();
                 animator.SetInteger("Condition", 1);
                 int randomValueAttack = Random.Range(0, 3);
                 for (int i = 0; i < 10; i++)

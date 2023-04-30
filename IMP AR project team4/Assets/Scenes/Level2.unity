@@ -1517,7 +1517,7 @@ PrefabInstance:
         type: 3}
       propertyPath: BossMonster
       value: 
-      objectReference: {fileID: 3981948455180800048, guid: 2e02e76b6daa941c7a95cab55c04498c,
+      objectReference: {fileID: 1558445630077669587, guid: 9f8bb577b72ba433d98ef7b609dde5b6,
         type: 3}
     - target: {fileID: 2733249030429474900, guid: e84a51c60f36e4017aa1796e776d2ac3,
         type: 3}

@@ -20,10 +20,16 @@ public class BasicMonster : MonoBehaviour
     public GameObject Bullet;
 
     public Transform AttackArea;
+
+    private AudioSource audioSource;
+    public AudioClip audioClip;
+    
     private bool CanAttack = false;
 
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
+        audioSource.clip = audioClip;
         CanAttack = false;
         animator = GetComponent<Animator>();
         player = GameObject.FindGameObjectWithTag("Player");
@@ -40,6 +46,7 @@ public class BasicMonster : MonoBehaviour
             if (!animator.GetBool("Attack") && CanAttack)
             {
                 animator.SetBool("Attack", true);
+                audioSource.Play();
                 GameObject go = Instantiate(Bullet, AttackArea.position, Quaternion.identity);
                 go.transform.parent = AttackArea.transform;
                 AttackArea.GetChild(0).GetComponent<Meteor>().SetBulletPosition(player.transform);
