@@ -53,45 +53,23 @@ public class Shoot : MonoBehaviour
     {
         if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
         {
-            touchPressed = true;
-            Debug.Log("touch Pressed");
+            if (EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId) && Input.touchCount==1)
+            {
+                Debug.Log("button");
+                
+            }
+            else
+            {
+               
+                Shooting();
+            }
+
         }
         cameraPostion_z = Camera.main.transform.forward;
         ScreenCenterPoint = new Vector2(Camera.main.pixelWidth / 2, Camera.main.pixelHeight / 2);
 
     }
-    private void FixedUpdate()
-    {
-        GameObject selectedGameObject = EventSystem.current.currentSelectedGameObject;
-        if (touchPressed && EventSystem.current.IsPointerOverGameObject())
-        {
-            if (selectedGameObject == FireButton)
-            {
-                Debug.Log(" i just only touch fire button");
-            }
-            else if (selectedGameObject == WaterButton)
-            {
-                Debug.Log(" i just only touch WaterButtonUi");
-            }
-            else if (selectedGameObject == ElectricButton)
-            {
-                Debug.Log(" i just only touch GroundButtonUi");
 
-            }
-
-
-        }
-        else if (touchPressed && selectedGameObject == null)
-        {
-            Shooting();
-        }
-
-
-
-
-
-        touchPressed = false;
-    }
     public void Shooting()
     {
 

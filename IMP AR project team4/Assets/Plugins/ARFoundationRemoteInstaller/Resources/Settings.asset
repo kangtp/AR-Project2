@@ -38,10 +38,31 @@ MonoBehaviour:
   editorGameViewSettings:
     resolutionScale: 0.33333334
     maxEditorViewFps: 10
-  packages: []
+  packages:
+  - displayName: AR Foundation Remote
+    version: 1.4.28-release.0
+    id: com.kyrylokuzyk.arfoundationremote
+  - displayName: AR Foundation
+    version: 4.2.7
+    id: com.unity.xr.arfoundation
+  - displayName: ARCore XR Plugin
+    version: 4.2.7
+    id: com.unity.xr.arcore
+  - displayName: ARKit XR Plugin
+    version: 4.2.7
+    id: com.unity.xr.arkit
+  - displayName: ARKit Face Tracking
+    version: 4.2.7
+    id: com.unity.xr.arkit-face-tracking
+  - displayName: Input System
+    version: 1.5.0
+    id: com.unity.inputsystem
+  - displayName: AR Subsystems
+    version: 4.2.7
+    id: com.unity.xr.arsubsystems
   inputHandlingData:
-    isLegacyInputManagerEnabled: 0
-    isNewInputSystemEnabled: 0
+    isLegacyInputManagerEnabled: 1
+    isNewInputSystemEnabled: 1
   debugSettings:
     logStartupErrors: 1
     showTelepathyLogs: 0
@@ -67,13 +88,13 @@ MonoBehaviour:
       e33: 0
     overrideProjectionMatrix: 0
     projectionMatrix:
-      e00: 3.4568877
+      e00: 3.4148989
       e01: 0
-      e02: 0.013057943
+      e02: 0.028850302
       e03: 0
       e10: 0
-      e11: 1.4141815
-      e12: 0.00583984
+      e11: 1.3970042
+      e12: 0.012283479
       e13: 0
       e20: 0
       e21: 0

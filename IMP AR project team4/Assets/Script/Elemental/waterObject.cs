@@ -7,6 +7,23 @@ public class waterObject : MonoBehaviour
     public AudioSource audioSource;
     public GameObject waterSkill;
     private int damage;
+    float waterTime;
+
+
+    private void Start()
+    {
+        waterTime = Time.time;
+    }
+    private void Update()
+    {
+        if (gameObject.tag == "Untagged")
+        {
+            if (Time.time - waterTime > 3f)
+            {
+                Destroy(gameObject);
+            }
+        }
+    }
     public void getWaterSkill()
     {
         audioSource.Play();
@@ -20,7 +37,7 @@ public class waterObject : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy") || other.CompareTag("RockMonster") || other.CompareTag("IceMonster") || other.CompareTag("FireMonster"))
         {
             GameObject go = Instantiate(waterSkill, other.transform.position, waterSkill.transform.rotation);
-            Destroy(go, 4.0f);
+            Destroy(go, 3.0f);
             Destroy(gameObject);
             if (other.CompareTag("RockMonster"))
             {

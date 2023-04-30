@@ -7,11 +7,11 @@ public class ElectricityObject : MonoBehaviour
     public AudioSource audioSource;
     public GameObject electricSkill;
     private int damage;
-    float bulletTime;
+    float electricityTime;
 
     private void Start()
     {
-        bulletTime = Time.time;
+        electricityTime = Time.time;
     }
     public void getElectricitySkill()
     {
@@ -22,9 +22,12 @@ public class ElectricityObject : MonoBehaviour
     }
     private void Update()
     {
-        if (Time.time - bulletTime > 3f)
+        if (gameObject.tag == "Untagged")
         {
-            Destroy(gameObject);
+            if (Time.time - electricityTime > 3f)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 
@@ -33,7 +36,7 @@ public class ElectricityObject : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy") || other.CompareTag("RockMonster") || other.CompareTag("IceMonster") || other.CompareTag("FireMonster"))
         {
             GameObject go = Instantiate(electricSkill, other.transform.position, electricSkill.transform.rotation);
-            Destroy(go, 2.0f);
+            Destroy(go, 3.0f);
             Destroy(gameObject);
             if (other.CompareTag("RockMonster"))
             {

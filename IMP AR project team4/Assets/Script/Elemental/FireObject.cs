@@ -7,6 +7,7 @@ public class FireObject : MonoBehaviour
     public AudioSource audioSource;
     public GameObject fireSkill;
     public int damage;
+    float fireTime;
     public void getFireSkill()
     {
         audioSource.Play();
@@ -14,13 +15,29 @@ public class FireObject : MonoBehaviour
         fire.fireCheck = true;
         Debug.Log("파이어 스킬 얻었다");
     }
+    private void Start()
+    {
+        fireTime = Time.time;
+    }
+    private void Update()
+    {
+        if(gameObject.tag=="Untagged")
+        {
+            if(Time.time - fireTime>3f)
+            {
+                Destroy(gameObject);
+            }
+        }
+        
+    }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("RockMonster") || other.CompareTag("IceMonster") || other.CompareTag("FireMonster"))
         {
             GameObject go = Instantiate(fireSkill, other.transform.position, fireSkill.transform.rotation);
-            Destroy(go, 4.0f);
+            Destroy(go, 3f);
+
             Destroy(gameObject);
             if (other.CompareTag("RockMonster"))
             {
