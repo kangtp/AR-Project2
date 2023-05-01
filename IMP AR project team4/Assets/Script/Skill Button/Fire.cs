@@ -5,16 +5,12 @@ using UnityEngine.UI;
 
 public class Fire : MonoBehaviour
 {
-    // Start is called before the first frame update
-
     private Button fireButton;//it is fireSkill Button
     private Image icon; // Fireicon
     private Color imgColor;//Fireicon color
     public bool fireCheck = false; // to check wheter skill is true
     public Shoot shootManger; //becuase to access otehr variable ex) sound , prefeb,transform
     private AudioSource _buttonAudio;// play audio when you clicked button
-
-
 
     private void Awake()
     {
@@ -25,73 +21,43 @@ public class Fire : MonoBehaviour
         imgColor = icon.color;//to get initial color
     }
 
-
-
-
-
-    // Update is called once per frame
     void Update()
     {
-
-      
-
-        //Debug.Log(fireCheck);
         ColorChange();// if you don't have skill. then skiil ui is transparent
-
     }
+
     public void ColorChange()
     {
-
-
-        if (fireCheck) //to change color if you have skill
+        if (fireCheck) //if you have skill, change color
         {
-            //Debug.Log("Check");
             Color color = imgColor;
-            icon.color = imgColor;//fire ui color exist
+            icon.color = imgColor;
         }
-        else
+        else  //when you don't have skill then color is transparent
         {
-            //Debug.Log("noCheck");
-            Color color = icon.color; //when you don't have skill then color is transparent
+            Color color = icon.color; 
             color.a = 0.3f;
             icon.color = color;
         }
+    }
 
-    }
-    public void ShootFire()//it is function if you clicekd button
+    //it is function if you clicekd button
+    public void ShootFire()
     {
-        Debug.Log("FireButton cliceked");
-        if (fireCheck)
+        Debug.Log("FireButton clicked");
+        if (fireCheck)  // if you have fireSkill
         {
-            Debug.Log("Fire");
-            FireShooting();
-            fireCheck = false;
-            
-        }
-        else
-        {
-            //No change
+            FireShooting(); //if button clicked, then shoot fire object
+            fireCheck = false;//because you use skill
         }
     }
+
+    //shoot fire object
     public void FireShooting()
     {
         Vector3 cameraPostion_z = Camera.main.transform.forward;
         Rigidbody firebulletObject = Instantiate(shootManger.FireBullet.GetComponent<Rigidbody>(), Camera.main.transform.position, Quaternion.identity);
         firebulletObject.AddForce(cameraPostion_z * 1, ForceMode.Impulse);
-        Ray ray = Camera.main.ScreenPointToRay(shootManger.ScreenCenterPoint);
-        RaycastHit hit;
         _buttonAudio.PlayOneShot(shootManger.FireSound);
-
-
-        if (Physics.Raycast(ray, out hit, shootManger.range, shootManger.shootableMask))
-        {
-            
-        }
-
-        Destroy(firebulletObject, 3.0f);
-
-
     }
-
-
 }

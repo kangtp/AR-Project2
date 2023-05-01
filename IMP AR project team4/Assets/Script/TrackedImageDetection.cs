@@ -9,12 +9,12 @@ public class TrackedImageDetection : MonoBehaviour
     private ARTrackedImageManager _trackedImgManager;
     public PlaceablePrefab[] placeablePrefabs;
     public Dictionary<string, GameObject> spawnedObjects = new Dictionary<string, GameObject>();
-    
 
     void Awake()
     {
         _trackedImgManager = GetComponent<ARTrackedImageManager>();
 
+        //move the placeablePrefabs in spawnedObjects, and instantiate.
         foreach (PlaceablePrefab pp in placeablePrefabs)
         {
             GameObject go = Instantiate(pp.prefab, Vector3.zero, Quaternion.identity);
@@ -56,6 +56,7 @@ public class TrackedImageDetection : MonoBehaviour
     private void UpdatePrefab(ARTrackedImage trackedImg)
     {
         GameObject obj = spawnedObjects[trackedImg.referenceImage.name];
+
         // tracking works well, so we can show the object at the tracked image's position
         if (trackedImg.trackingState == TrackingState.Tracking)
         {
@@ -65,7 +66,6 @@ public class TrackedImageDetection : MonoBehaviour
         }
         // limited tracking information is available. The tracking works somehow but may be poor quality.
         // we will disable the spawned object then.
-        
         else
         {
             // trackingState == None, so we can disable the object
@@ -74,6 +74,7 @@ public class TrackedImageDetection : MonoBehaviour
     }
 }
 
+//there is image name and prefab corresponding to the image.
 [System.Serializable]
 public struct PlaceablePrefab
 {

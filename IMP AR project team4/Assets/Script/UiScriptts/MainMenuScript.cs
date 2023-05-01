@@ -5,11 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuScript : MonoBehaviour
 {
-  //  public GameObject LevelMenu;
-   // public GameObject SettingsMenu;
+   //public GameObject LevelMenu;
+   //public GameObject SettingsMenu;
 
     //call this method when "play" is pressed
-   /* public void PlayGame()
+    /* public void PlayGame()
     {
         LevelMenu.SetActive(true);
     }

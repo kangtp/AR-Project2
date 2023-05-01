@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class MusicScript : MonoBehaviour
 {
-    //reference to audio source component
+     //reference to audio source component
      public AudioSource myMusic;
      //public Slider Volume;
 
@@ -13,7 +13,7 @@ public class MusicScript : MonoBehaviour
     //private float musicVolume =1f;
 
     // Start is called before the first frame update
-   /* void Start()
+    /* void Start()
     {
         //assign audio source comp to control it
         audioSrc = GetComponent<AudioSource>();

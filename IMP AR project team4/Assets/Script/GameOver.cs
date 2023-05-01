@@ -9,5 +9,4 @@ public class GameOver : MonoBehaviour
     {
         SceneManager.LoadScene("UI");
     }
-
 }

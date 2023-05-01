@@ -5,16 +5,12 @@ using UnityEngine.UI;
 
 public class Electricity : MonoBehaviour
 {
-    // Start is called before the first frame update
-
     private Button electircButton;
     private Image icon; // icon
     private Color imgColor;
-    public bool electricCheck; // 이미지를 인식하면 true로 바뀜 이것은 나중에 합칠때 구현  일단은 테스트니깐 true
+    public bool electricCheck;
     public Shoot shootManger;
     private AudioSource _buttonAudio;
-
-
 
     private void Awake()
     {
@@ -25,73 +21,44 @@ public class Electricity : MonoBehaviour
         imgColor = icon.color;
     }
 
-
-
-
-
-    // Update is called once per frame
     void Update()
     {
-
-        //인식처리가 true라면 fireCheck true 아니라면 false 반환
-
-        //Debug.Log(fireCheck);
-        ColorChange();
-
+        ColorChange();  // if you don't have skill. then skiil ui is transparent
     }
+
+    // to change color if you have skill
     public void ColorChange()
     {
-
-
-        if (electricCheck) //when image recognize
+        if (electricCheck) //if you have skill, change color
         {
-            //Debug.Log("Check");
             Color color = imgColor;
             icon.color = imgColor;
         }
-        else
+        else    // when you don't have skill then color is transparent
         {
-            //Debug.Log("noCheck");
             Color color = icon.color;
             color.a = 0.3f;
             icon.color = color;
         }
-
     }
+
+    // it is function if you clicekd button
     public void ShootElectric()
     {
-        Debug.Log("FireButton cliceked");
-        if (electricCheck)
+        Debug.Log("electricityButton clicked");
+        if (electricCheck)  // if you have electricity Skill
         {
-            Debug.Log("Fire");
-            ElectricShooting();
-            electricCheck = false;
-            //Fire check is false 
-        }
-        else
-        {
-            //No change
+            ElectricShooting();   //if button clicked, then shoot electricity object
+            electricCheck = false;  //because you use skill
         }
     }
+
+    //shoot electricity object
     public void ElectricShooting()
     {
         Vector3 cameraPostion_z = Camera.main.transform.forward;
         Rigidbody electricBulletObject = Instantiate(shootManger.ElectricBullet.GetComponent<Rigidbody>(), Camera.main.transform.position, Quaternion.identity);
         electricBulletObject.AddForce(cameraPostion_z * 1, ForceMode.Impulse);
-        Ray ray = Camera.main.ScreenPointToRay(shootManger.ScreenCenterPoint);
-        RaycastHit hit;
         _buttonAudio.PlayOneShot(shootManger.ElectricSound);
-
-
-        if (Physics.Raycast(ray, out hit, shootManger.range, shootManger.shootableMask))
-        {
-            
-        }
-
-        Destroy(electricBulletObject, 3.0f);
-
-
     }
-
-
 }

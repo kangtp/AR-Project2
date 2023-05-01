@@ -8,50 +8,37 @@ using UnityEngine.SceneManagement;
 public class Player : MonoBehaviour
 {
     public AudioSource hurtAudio;
-    private int health = 5;
+    private int health = 5;     //player's health
     private LifeManager lifeManger;
     private Scene targetScene;
-   
-
-    public Image bloodScreen;
-
-
+    public Image bloodScreen;   //if player get damage, show bloodScreen.
 
     void Start()
     {
         lifeManger = GameObject.FindObjectOfType<LifeManager>();
-        targetScene = SceneManager.GetSceneByName("GameOver");
+        targetScene = SceneManager.GetSceneByName("GameOver");  //get GameOver scene
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-
-    }
     private void OnTriggerEnter(Collider other)
     {
+        //when player collide with Meteor(Boss attack)
         if (other.gameObject.CompareTag("Meteor"))
         {
             health--;
             lifeManger.reloadLife(health);
             Destroy(other.gameObject);
-
             hurtAudio.Play();
-
             StartCoroutine(ShowBloodScreen());
+
+            //if player's health becomes 0, game over
             if (health <= 0)
             {
-
                 if (targetScene != null)
                 {
                     SceneManager.LoadScene("GameOver");
                 }
-
-
             }
         }
-
     }
 
     //if player damaged, show Blood effect
@@ -62,4 +49,3 @@ public class Player : MonoBehaviour
         bloodScreen.color = Color.clear;
     }
 }
-/// player code
