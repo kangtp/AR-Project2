@@ -7,22 +7,22 @@ public class Electricity : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    private Button electircButton;
+    private Button electircButton;// it is electric skill button
     private Image icon; // icon
-    private Color imgColor;
-    public bool electricCheck; // 이미지를 인식하면 true로 바뀜 이것은 나중에 합칠때 구현  일단은 테스트니깐 true
-    public Shoot shootManger;
-    private AudioSource _buttonAudio;
+    private Color imgColor;//icon color
+    public bool electricCheck; // it is bool type if you get water skill then it is true else false
+    public Shoot shootManger; //becuase to access otehr variable ex) sound , prefeb
+    private AudioSource _buttonAudio;//it is play when you clicked button
 
 
 
     private void Awake()
     {
-        electircButton = GetComponent<Button>();
-        electircButton.onClick.AddListener(ShootElectric);
-        _buttonAudio = FindObjectOfType<AudioSource>();
-        icon = GetComponent<Image>();
-        imgColor = icon.color;
+        electircButton = GetComponent<Button>();// to geT BUutton component
+        electircButton.onClick.AddListener(ShootElectric);///add shooting event
+        _buttonAudio = FindObjectOfType<AudioSource>();//find audioSourceComponent
+        icon = GetComponent<Image>();///to get imageComponent
+        imgColor = icon.color;//// to store a initial color
     }
 
 
@@ -36,18 +36,18 @@ public class Electricity : MonoBehaviour
         //인식처리가 true라면 fireCheck true 아니라면 false 반환
 
         //Debug.Log(fireCheck);
-        ColorChange();
+        ColorChange();// if you don't have skill. then skiil ui is transparent
 
     }
-    public void ColorChange()
+    public void ColorChange()//if you don't have skill. then skiil ui is transparent
     {
 
 
-        if (electricCheck) //when image recognize
+        if (electricCheck) //when image recognize and you get skill
         {
             //Debug.Log("Check");
             Color color = imgColor;
-            icon.color = imgColor;
+            icon.color = imgColor;//electric ui color exist
         }
         else
         {
@@ -58,27 +58,27 @@ public class Electricity : MonoBehaviour
         }
 
     }
-    public void ShootElectric()
+    public void ShootElectric() //it is function if you clicekd button
     {
-        Debug.Log("FireButton cliceked");
-        if (electricCheck)
+        Debug.Log("Button cliceked");
+        if (electricCheck) //if you have electricSkill
         {
-            Debug.Log("Fire");
+            Debug.Log("Electric");
             ElectricShooting();
             electricCheck = false;
-            //Fire check is false 
+            //electric check is false 
         }
         else
         {
             //No change
         }
     }
-    public void ElectricShooting()
+    public void ElectricShooting()// function to fire ElectricBullet
     {
-        Vector3 cameraPostion_z = Camera.main.transform.forward;
-        Rigidbody electricBulletObject = Instantiate(shootManger.ElectricBullet.GetComponent<Rigidbody>(), Camera.main.transform.position, Quaternion.identity);
-        electricBulletObject.AddForce(cameraPostion_z * 1, ForceMode.Impulse);
-        Ray ray = Camera.main.ScreenPointToRay(shootManger.ScreenCenterPoint);
+        Vector3 cameraPostion_z = Camera.main.transform.forward;// bullet z -axis direct
+        Rigidbody electricBulletObject = Instantiate(shootManger.ElectricBullet.GetComponent<Rigidbody>(), Camera.main.transform.position, Quaternion.identity);// to instanciate bullet 
+        electricBulletObject.AddForce(cameraPostion_z * 1, ForceMode.Impulse); //to Fire electric Shooting
+        Ray ray = Camera.main.ScreenPointToRay(shootManger.ScreenCenterPoint); //to shoot from centerpointer
         RaycastHit hit;
         _buttonAudio.PlayOneShot(shootManger.ElectricSound);
 
@@ -88,7 +88,8 @@ public class Electricity : MonoBehaviour
             
         }
 
-        Destroy(electricBulletObject, 3.0f);
+        Destroy(electricBulletObject, 3.0f); //// after 3 seconds, then destroy bullet
+
 
 
     }

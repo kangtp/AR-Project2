@@ -18,10 +18,10 @@ public class Fire : MonoBehaviour
 
     private void Awake()
     {
-        fireButton = GetComponent<Button>();
-        fireButton.onClick.AddListener(ShootFire);
-        _buttonAudio = FindObjectOfType<AudioSource>();
-        icon = GetComponent<Image>();
+        fireButton = GetComponent<Button>(); // to geT BUutton component
+        fireButton.onClick.AddListener(ShootFire);//add shooting event
+        _buttonAudio = FindObjectOfType<AudioSource>();//find audioSourceComponent
+        icon = GetComponent<Image>();// if you don't have skill. then skiil ui is transparent
         imgColor = icon.color;//to get initial color
     }
 
@@ -64,7 +64,7 @@ public class Fire : MonoBehaviour
         if (fireCheck)
         {
             Debug.Log("Fire");
-            FireShooting();
+            FireShooting();//// if you don't have skill. then skiil ui is transparent
             fireCheck = false;
             
         }
@@ -75,12 +75,12 @@ public class Fire : MonoBehaviour
     }
     public void FireShooting()
     {
-        Vector3 cameraPostion_z = Camera.main.transform.forward;
-        Rigidbody firebulletObject = Instantiate(shootManger.FireBullet.GetComponent<Rigidbody>(), Camera.main.transform.position, Quaternion.identity);
-        firebulletObject.AddForce(cameraPostion_z * 1, ForceMode.Impulse);
-        Ray ray = Camera.main.ScreenPointToRay(shootManger.ScreenCenterPoint);
+        Vector3 cameraPostion_z = Camera.main.transform.forward;//bullet z -axis direct
+        Rigidbody firebulletObject = Instantiate(shootManger.FireBullet.GetComponent<Rigidbody>(), Camera.main.transform.position, Quaternion.identity); // to instanciate bullet
+        firebulletObject.AddForce(cameraPostion_z * 1, ForceMode.Impulse);//to Fire firebullet Shooting
+        Ray ray = Camera.main.ScreenPointToRay(shootManger.ScreenCenterPoint); // to shoot at screencenter
         RaycastHit hit;
-        _buttonAudio.PlayOneShot(shootManger.FireSound);
+        _buttonAudio.PlayOneShot(shootManger.FireSound);// to play sound
 
 
         if (Physics.Raycast(ray, out hit, shootManger.range, shootManger.shootableMask))
@@ -88,7 +88,7 @@ public class Fire : MonoBehaviour
             
         }
 
-        Destroy(firebulletObject, 3.0f);
+        Destroy(firebulletObject, 3.0f); // after 3 seconds, then destroy bullet
 
 
     }

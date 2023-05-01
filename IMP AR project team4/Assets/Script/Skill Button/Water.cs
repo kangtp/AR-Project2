@@ -18,10 +18,10 @@ public class Water : MonoBehaviour
 
     private void Awake()
     {
-        waterButton = GetComponent<Button>();
-        waterButton.onClick.AddListener(ShootWater);
-        _buttonAudio = FindObjectOfType<AudioSource>();
-        icon = GetComponent<Image>();
+        waterButton = GetComponent<Button>();// to geT BUutton component
+        waterButton.onClick.AddListener(ShootWater);//add shooting event
+        _buttonAudio = FindObjectOfType<AudioSource>();//find audioSourceComponent
+        icon = GetComponent<Image>();//to get imageComponent
         imgColor = icon.color; // to store a initial color
     }
 
@@ -74,10 +74,11 @@ public class Water : MonoBehaviour
     }
     public void WaterShooting()// function to fire WaterBullet
     {
-        Vector3 cameraPostion_z = Camera.main.transform.forward;
-        Rigidbody WaterbulletObject = Instantiate(shootManger.WaterBullet.GetComponent<Rigidbody>(), Camera.main.transform.position, Quaternion.identity);
-        WaterbulletObject.AddForce(cameraPostion_z * 1, ForceMode.Impulse);
-        Ray ray = Camera.main.ScreenPointToRay(shootManger.ScreenCenterPoint);
+        Vector3 cameraPostion_z = Camera.main.transform.forward;//bullet z -axis direct
+        Rigidbody WaterbulletObject = Instantiate(shootManger.WaterBullet.GetComponent<Rigidbody>(), Camera.main.transform.position, Quaternion.identity);//to instanciate bullet 
+        
+        WaterbulletObject.AddForce(cameraPostion_z * 1, ForceMode.Impulse);// to FireWater Shooting
+        Ray ray = Camera.main.ScreenPointToRay(shootManger.ScreenCenterPoint); //to shoot from centerpointer 
         RaycastHit hit;
         _buttonAudio.PlayOneShot(shootManger.WaterSound);//play sound
 
