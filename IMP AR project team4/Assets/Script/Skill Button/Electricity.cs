@@ -14,11 +14,11 @@ public class Electricity : MonoBehaviour
 
     private void Awake()
     {
-        electircButton = GetComponent<Button>();
-        electircButton.onClick.AddListener(ShootElectric);
-        _buttonAudio = FindObjectOfType<AudioSource>();
-        icon = GetComponent<Image>();
-        imgColor = icon.color;
+        electircButton = GetComponent<Button>();// to geT BUutton component
+        electircButton.onClick.AddListener(ShootElectric);///add shooting event
+        _buttonAudio = FindObjectOfType<AudioSource>();//find audioSourceComponent
+        icon = GetComponent<Image>();///to get imageComponent
+        imgColor = icon.color;//// to store a initial color
     }
 
     void Update()
@@ -32,7 +32,7 @@ public class Electricity : MonoBehaviour
         if (electricCheck) //if you have skill, change color
         {
             Color color = imgColor;
-            icon.color = imgColor;
+            icon.color = imgColor;//electric ui color exist
         }
         else    // when you don't have skill then color is transparent
         {

@@ -15,10 +15,10 @@ public class Water : MonoBehaviour
 
     private void Awake()
     {
-        waterButton = GetComponent<Button>();
-        waterButton.onClick.AddListener(ShootWater);
-        _buttonAudio = FindObjectOfType<AudioSource>();
-        icon = GetComponent<Image>();
+        waterButton = GetComponent<Button>();// to geT BUutton component
+        waterButton.onClick.AddListener(ShootWater);//add shooting event
+        _buttonAudio = FindObjectOfType<AudioSource>();//find audioSourceComponent
+        icon = GetComponent<Image>();//to get imageComponent
         imgColor = icon.color; // to store a initial color
     }
 

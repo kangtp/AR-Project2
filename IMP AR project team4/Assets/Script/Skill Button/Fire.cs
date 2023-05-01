@@ -14,10 +14,10 @@ public class Fire : MonoBehaviour
 
     private void Awake()
     {
-        fireButton = GetComponent<Button>();
-        fireButton.onClick.AddListener(ShootFire);
-        _buttonAudio = FindObjectOfType<AudioSource>();
-        icon = GetComponent<Image>();
+        fireButton = GetComponent<Button>(); // to geT BUutton component
+        fireButton.onClick.AddListener(ShootFire);//add shooting event
+        _buttonAudio = FindObjectOfType<AudioSource>();//find audioSourceComponent
+        icon = GetComponent<Image>();// if you don't have skill. then skiil ui is transparent
         imgColor = icon.color;//to get initial color
     }
 
