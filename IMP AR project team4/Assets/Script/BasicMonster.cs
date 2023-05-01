@@ -10,21 +10,21 @@ public class BasicMonster : MonoBehaviour
 
     private Animator animator;
 
-    public float attackDistance = 6f; // 공격 가능한 거리
+    public float attackDistance = 6f; // attack range
 
-    public float Speed = 2.0f;
+    public float Speed = 2.0f; // bullet Speed
 
-    public float AttackTimemin = 2.0f; //attack 랜덤 값의 최소값
-    public float AttackTimemax = 4.0f; //attack 랜덤 값의 최대값
+    public float AttackTimemin = 2.0f; //Attack minimum of random values
+    public float AttackTimemax = 4.0f; //attack maximum of random values
 
     public GameObject Bullet;
 
-    public Transform AttackArea;
+    public Transform AttackArea; // Instantiate Bullet where you spawn it
 
     private AudioSource audioSource;
     public AudioClip[] audioClip;
     
-    private bool CanAttack = false;
+    private bool CanAttack = false; // control Attack
 
     void Start()
     {
@@ -33,23 +33,23 @@ public class BasicMonster : MonoBehaviour
         CanAttack = false;
         animator = GetComponent<Animator>();
         player = GameObject.FindGameObjectWithTag("Player");
-        animator.SetBool("Attack", false);
-        StartCoroutine("BasicAttack");
+        animator.SetBool("Attack", false); // set animation default value -> Idle
+        StartCoroutine("BasicAttack"); // Start Attack behavior
     }
 
-    IEnumerator BasicAttack()
+    IEnumerator BasicAttack() // it is about Basic Monster Attack
     {
         while (true)
         {
-            float randomValue = Random.Range(AttackTimemin, AttackTimemax);
+            float randomValue = Random.Range(AttackTimemin, AttackTimemax); // Accept the random value of the attack time.
             yield return new WaitForSeconds(randomValue);
-            if (!animator.GetBool("Attack") && CanAttack)
+            if (!animator.GetBool("Attack") && CanAttack) // if basicmonster is not attacking
             {
-                animator.SetBool("Attack", true);
+                animator.SetBool("Attack", true); // play Attack Animation
                 audioSource.Play();
                 GameObject go = Instantiate(Bullet, AttackArea.position, Quaternion.identity);
-                go.transform.parent = AttackArea.transform;
-                AttackArea.GetChild(0).GetComponent<Meteor>().SetBulletPosition(player.transform);
+                go.transform.parent = AttackArea.transform; // put it as a child of AttackArea because control Bullet
+                AttackArea.GetChild(0).GetComponent<Meteor>().SetBulletPosition(player.transform); // setBulletPosition
                 yield return new WaitForSeconds(0.1f);
                 //StartCoroutine("SpawnMeteor");
             }
@@ -61,18 +61,18 @@ public class BasicMonster : MonoBehaviour
     {
 
         transform.LookAt(player.transform);
-        float distance = Vector3.Distance(transform.position, player.transform.position);
+        float distance = Vector3.Distance(transform.position, player.transform.position); //Distance between player and monster
 
         if (animator.GetBool("Attack"))
         {
-            animator.SetBool("Attack", false);
+            animator.SetBool("Attack", false); // change value if Monster Attack (Attack -> Idle)
         }
-        if (distance > attackDistance)
+        if (distance > attackDistance) // Behavior of monsters when entering attack range (not entering)
         {
-            transform.position = Vector3.MoveTowards(transform.position, player.transform.position, Speed * Time.deltaTime);
-            CanAttack = false;
+            transform.position = Vector3.MoveTowards(transform.position, player.transform.position, Speed * Time.deltaTime); // if attack range is out of range Monster follow Player
+            CanAttack = false; // control Monster Attack because Monster can't Attack that it is not in Attack range
         }
-        else
+        else // Behavior of monsters when entering attack range
         {
             CanAttack = true;
         }
