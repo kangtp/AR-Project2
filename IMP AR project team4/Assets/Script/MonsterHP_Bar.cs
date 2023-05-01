@@ -15,15 +15,10 @@ public class MonsterHP_Bar : MonoBehaviour
     _cam = Camera.main;
    }
 
+   //compute monster HP bar
    public void UpdateHpbar(float maxHp, float currentHp)
    {
      hpBarsprite.fillAmount = currentHp / maxHp;
      Canshow = true;
-   }
-
-   private void Update() {
-
-
-    
    }
 }
