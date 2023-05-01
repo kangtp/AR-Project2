@@ -81,6 +81,7 @@ public class EarthMonster : MonoBehaviour
 
     public void HPControl(int Deal)
     {
+        animator.SetInteger("Condition", 2);
         currentHp -= Deal;
         HP_Bar.UpdateHpbar(HP,currentHp);
     }
@@ -96,7 +97,7 @@ public class EarthMonster : MonoBehaviour
         {
             float randomValue = Random.Range(AttackTimemin, AttackTimemax);
             yield return new WaitForSeconds(randomValue);
-            if (animator.GetInteger("Condition") != 2)
+            if (animator.GetInteger("Condition") != 1)
             {
                 audioSource.Play();
                 animator.SetInteger("Condition", 1);

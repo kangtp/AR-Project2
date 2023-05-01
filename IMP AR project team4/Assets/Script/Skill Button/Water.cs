@@ -7,12 +7,12 @@ public class Water : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    private Button waterButton;
+    private Button waterButton; // it is water skill button
     private Image icon; // icon
-    private Color imgColor;
-    public bool waterCheck = false; 
-    public Shoot shootManger;
-    private AudioSource _buttonAudio;
+    private Color imgColor;// icon color
+    public bool waterCheck = false; // it is bool type if you get water skill then it is true else false
+    public Shoot shootManger;// becuase to access otehr variable ex) sound , prefeb
+    private AudioSource _buttonAudio;// it is play when you clicked button
 
 
 
@@ -22,7 +22,7 @@ public class Water : MonoBehaviour
         waterButton.onClick.AddListener(ShootWater);
         _buttonAudio = FindObjectOfType<AudioSource>();
         icon = GetComponent<Image>();
-        imgColor = icon.color;
+        imgColor = icon.color; // to store a initial color
     }
 
 
@@ -33,23 +33,22 @@ public class Water : MonoBehaviour
     void Update()
     {
 
-        //인식처리가 true라면 fireCheck true 아니라면 false 반환
-
-        //Debug.Log(fireCheck);
-        ColorChange();
+        
+        
+        ColorChange(); // if you don't have skill. then skiil ui is transparent
 
     }
-    public void ColorChange()
+    public void ColorChange()// to change color if you have skill
     {
 
 
-        if (waterCheck) //when image recognize
+        if (waterCheck) //when image recognize and you get skill
         {
-            //Debug.Log("Check");
-            Color color = imgColor;
-            icon.color = imgColor;
+            
+            Color color = imgColor; 
+            icon.color = imgColor;//water ui color exist
         }
-        else
+        else // when you don't have skill then color is transparent
         {
             //Debug.Log("noCheck");
             Color color = icon.color;
@@ -58,29 +57,29 @@ public class Water : MonoBehaviour
         }
 
     }
-    public void ShootWater()
+    public void ShootWater()// it is function if you clicekd button
     {
         Debug.Log("WaterButton cliceked");
-        if (waterCheck)
+        if (waterCheck)// if you have waterSkill
         {
-            Debug.Log("Fire");
-            WaterShooting();
-            waterCheck = false;
-            //Fire check is false 
+            Debug.Log("Water");
+            WaterShooting();//if button clicked, then fire waterbullet
+            waterCheck = false;//because you use skill waterskillstate is false;
+            
         }
         else
         {
             //No change
         }
     }
-    public void WaterShooting()
+    public void WaterShooting()// function to fire WaterBullet
     {
         Vector3 cameraPostion_z = Camera.main.transform.forward;
         Rigidbody WaterbulletObject = Instantiate(shootManger.WaterBullet.GetComponent<Rigidbody>(), Camera.main.transform.position, Quaternion.identity);
         WaterbulletObject.AddForce(cameraPostion_z * 1, ForceMode.Impulse);
         Ray ray = Camera.main.ScreenPointToRay(shootManger.ScreenCenterPoint);
         RaycastHit hit;
-        _buttonAudio.PlayOneShot(shootManger.WaterSound);
+        _buttonAudio.PlayOneShot(shootManger.WaterSound);//play sound
 
 
         if (Physics.Raycast(ray, out hit, shootManger.range, shootManger.shootableMask))
@@ -88,7 +87,7 @@ public class Water : MonoBehaviour
            
         }
 
-        Destroy(WaterbulletObject, 3.0f);
+        Destroy(WaterbulletObject, 3.0f); // after 3 seconds, then destroy bullet
 
 
     }

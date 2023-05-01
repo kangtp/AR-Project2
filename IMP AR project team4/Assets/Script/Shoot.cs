@@ -14,8 +14,8 @@ public class Shoot : MonoBehaviour
     public GameObject ElectricBullet;// it is Ground Prefeb
     public Texture2D crosshair; // crosshair prefeb
 
-    public EventSystem _eventSystem;
-    
+    public EventSystem _eventSystem; // To use IsPointerOverGameObject 
+
 
     public AudioClip shootingSound;
     public AudioClip FireSound;
@@ -23,13 +23,13 @@ public class Shoot : MonoBehaviour
     public AudioClip ElectricSound;
     private AudioSource _audioSource;
 
-    public Vector3 cameraPostion_z;
+    public Vector3 cameraPostion_z; // it is a vector3 to express z direction
 
 
     private bool touchPressed = false; // it is system touch on/off
-    public float crosshairSize;
-    public int range;
-    public LayerMask shootableMask;
+    public float crosshairSize; // to adjust crosshairSize
+    public int range;// it is shoot range
+    public LayerMask shootableMask; // it is shootable mask
     public Vector2 ScreenCenterPoint;// it is center of phone
     public float speed; //bullet speed
 
@@ -40,7 +40,7 @@ public class Shoot : MonoBehaviour
 
     void Start()
     {
-        ScreenCenterPoint = new Vector2(Camera.main.pixelWidth / 2, Camera.main.pixelHeight / 2);
+        ScreenCenterPoint = new Vector2(Camera.main.pixelWidth / 2, Camera.main.pixelHeight / 2); // to get screenCenterPoint
         _audioSource = GetComponent<AudioSource>();
         cameraPostion_z = Camera.main.transform.forward;
     }
@@ -67,7 +67,7 @@ public class Shoot : MonoBehaviour
 
     }
 
-    public void Shooting()
+    public void Shooting() // it is bullet shooting function
     {
 
         cameraPostion_z = Camera.main.transform.forward; // it is exist to shooting 
@@ -78,9 +78,9 @@ public class Shoot : MonoBehaviour
         if (Physics.Raycast(ray, out hit, range, shootableMask))// raycast about skill
         {
             
-            // because it is exist to depend skill item , when skillitem on, you dont throw cunai
+            // because it is exist to depend skill item , when skillitem locate front of you , you dont throw cunai
             
-            if (hit.collider.tag == "fireObject")
+            if (hit.collider.tag == "fireObject") 
             {
                 //get fire skill and turn on the fire UI light
                 Debug.Log("Fire Skil Get!");

@@ -564,9 +564,6 @@ MonoBehaviour:
     type: 3}
   crosshair: {fileID: 2800000, guid: ebc736b24391b6c4589ed5c9c98102a0, type: 3}
   _eventSystem: {fileID: 1258343734}
-  FireButton: {fileID: 328259860}
-  WaterButton: {fileID: 1446641550}
-  ElectricButton: {fileID: 815675358}
   shootingSound: {fileID: 8300000, guid: 159a86c7305c4674a8074c463e9f3a55, type: 3}
   FireSound: {fileID: 8300000, guid: 4aaece02dad8c435cabbc90695a7588b, type: 3}
   WaterSound: {fileID: 8300000, guid: 502266ece51f74f0cafc1893ca5e26d9, type: 3}
@@ -579,7 +576,6 @@ MonoBehaviour:
     m_Bits: 2147483647
   ScreenCenterPoint: {x: 0, y: 0}
   speed: 10
-  _ArCamera: {fileID: 22732920}
 --- !u!82 &388525037
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1322,7 +1318,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.33059478, y: 0.5609116, z: 0.11329727}
+  m_Size: {x: 0.1, y: 0.2, z: 0.1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &873646254
 Transform:

@@ -7,12 +7,12 @@ public class Fire : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    private Button fireButton;
-    private Image icon; // icon
-    private Color imgColor;
-    public bool fireCheck = false; // 이미지를 인식하면 true로 바뀜 이것은 나중에 합칠때 구현  일단은 테스트니깐 true
-    public Shoot shootManger;
-    private AudioSource _buttonAudio;
+    private Button fireButton;//it is fireSkill Button
+    private Image icon; // Fireicon
+    private Color imgColor;//Fireicon color
+    public bool fireCheck = false; // to check wheter skill is true
+    public Shoot shootManger; //becuase to access otehr variable ex) sound , prefeb,transform
+    private AudioSource _buttonAudio;// play audio when you clicked button
 
 
 
@@ -22,7 +22,7 @@ public class Fire : MonoBehaviour
         fireButton.onClick.AddListener(ShootFire);
         _buttonAudio = FindObjectOfType<AudioSource>();
         icon = GetComponent<Image>();
-        imgColor = icon.color;
+        imgColor = icon.color;//to get initial color
     }
 
 
@@ -33,32 +33,32 @@ public class Fire : MonoBehaviour
     void Update()
     {
 
-        //인식처리가 true라면 fireCheck true 아니라면 false 반환
+      
 
         //Debug.Log(fireCheck);
-        ColorChange();
+        ColorChange();// if you don't have skill. then skiil ui is transparent
 
     }
     public void ColorChange()
     {
 
 
-        if (fireCheck) //when image recognize
+        if (fireCheck) //to change color if you have skill
         {
             //Debug.Log("Check");
             Color color = imgColor;
-            icon.color = imgColor;
+            icon.color = imgColor;//fire ui color exist
         }
         else
         {
             //Debug.Log("noCheck");
-            Color color = icon.color;
+            Color color = icon.color; //when you don't have skill then color is transparent
             color.a = 0.3f;
             icon.color = color;
         }
 
     }
-    public void ShootFire()
+    public void ShootFire()//it is function if you clicekd button
     {
         Debug.Log("FireButton cliceked");
         if (fireCheck)
@@ -66,7 +66,7 @@ public class Fire : MonoBehaviour
             Debug.Log("Fire");
             FireShooting();
             fireCheck = false;
-            //Fire check is false 
+            
         }
         else
         {
