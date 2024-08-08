@@ -1,5 +1,5 @@
 # AJOU NINJA (2023 IMP AR Project)
-<img width="174" alt="image" src="https://github.com/user-attachments/assets/92f83050-b180-4167-9126-6378678c6173">
+<div align="center"><img width="174" alt="image" src="https://github.com/user-attachments/assets/92f83050-b180-4167-9126-6378678c6173">
 <div align="center">
 <h2>ajou ninja</h2>
 AJOU Ninja is an immersive app that should bring the player back into their childhood, at the time when they were dreaming of becoming a ninja themselves. Just after pressing the “play” button, the player starts their journey of protecting Ajou University from the cruel monster that wants to destroy it…
