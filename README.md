@@ -1,10 +1,8 @@
 # AJOU NINJA (2023 IMP AR Project)
 <div align="center"><img width="174" alt="image" src="https://github.com/user-attachments/assets/92f83050-b180-4167-9126-6378678c6173">
-<div align="center">
-<h2>ajou ninja</h2>
-AJOU Ninja is an immersive app that should bring the player back into their childhood, at the time when they were dreaming of becoming a ninja themselves. Just after pressing the “play” button, the player starts their journey of protecting Ajou University from the cruel monster that wants to destroy it…
+<h2>AJOU NINJA</h2>
+"아주닌자"는 플레이어가 닌자역할이 되어서 주변에서 나오는 몬스터로부터 마을을 지키는 AR게임입니다.
 </div>
-
 
 ## 목차
   - [개요](#개요) 
@@ -12,10 +10,10 @@ AJOU Ninja is an immersive app that should bring the player back into their chil
   - [게임 플레이 방식](#게임-플레이-방식)
 
 ## 개요
-- 프로젝트 이름: SosoVillage 🏠
-- 프로젝트 지속기간: 2022.02-2022.06
+- 프로젝트 이름: AJOU NINJA
+- 프로젝트 지속기간: 2023.04.01 ~ 2023.05.01
 - 개발 엔진 및 언어: Unity & C#
-- 멤버: 팀 정현지(이정현, 김민정, 김민지)
+- 멤버: TEAM4(강현서,박선준,양경덕,Nitu Cristina)
 
 ## 게임 설명
 |![image](https://user-images.githubusercontent.com/66003567/216818254-18683c3f-af80-4009-b2cc-35bdee865f23.png)|![image](https://user-images.githubusercontent.com/66003567/216818272-8749569b-b217-4572-9738-32b0058459f4.png)|
